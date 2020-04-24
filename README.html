@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MbSoftLab.TemplateEngine.Core</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://jprencipe.bitbucket.io/md-template/css/md-template.css">
+    <!-- <link rel="stylesheet" href="css/md-template.css">-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.css" rel="stylesheet" />
+    <!--https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript-->
+ 
+
+    <link href="css/autocomplete.css" rel="stylesheet" />
+
+
+    <script src="js/AutoCompleteSuggestionFinder.js"></script>
+
+    <script src="js/autocomplete.js"></script>
+
+
+    <script type="text/javascript" src="https://www.the-art-of-web.com/hilitor.js"></script>
+    <script type="text/javascript" src="https://jprencipe.bitbucket.io/md-template/js/md-template.js"></script>
+    <script type="text/javascript" src="js/md-template.js"></script>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-clike.min.js"></script>
+    <script src="https://raw.githubusercontent.com/bartaz/sandbox.js/master/jquery.highlight.js"></script>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand">
+            <img src="https://api.nuget.org/v3-flatcontainer/mbsoftlab.templateengine.core/1.0.0/icon"
+                 width="30" height="30" class="d-inline-block align-top" alt="">
+            MbSoftLab.TemplateEngine.Core
+        </a>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+            <ul class="navbar-nav">
+
+                <li class="nav-item active">
+                    <div class="autocomplete nav-item">
+                        <input class="form-control" type="search" placeholder="Dokumentation durchsuchen..."
+                               aria-label="Search"
+                               id="searcher" name="searcher"
+                               onkeyup="search()"
+                               onchange="search()"
+                               autocomplete="off"
+                               style="width:785px;" />
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        <div class="row mt-xl-1">
+            <div class="col-sm-3" style="border-right:thin;">
+                <div class="mt-xl-5">
+                    <div style="max-height:15vh;">
+                        <h3 class="mt-5">Inhaltsverzeichnis</h3>
+                        <input type="text" class="form-control" id="tocSearchInput" onkeyup="searchInToc()" placeholder="Inhaltsverzeichnis durchsuchen..." title="Type in a category">
+                    </div>
+                    <div class="container overflow-auto" style="max-height:75vh;">
+                        <ul id="toc"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div id="content" class="container mt-xl-5 overflow-auto" style="max-height:85vh; max-width:100vw;">
+                    <h1 id="mbsoftlab.templateengine.core">MbSoftLab.TemplateEngine.Core</h1>
+<p PropertyName="">Die TemplateEngine ersetzt Werte aus Propertys von C# Klassen in Templatezeichenketten.
+Die C# Klasse mit den Propertys zur Datenhaltung wird hier als &quot;TemplateDataModel-Klasse&quot; bezeichnet.
+Die Zeichenkette mit den Platzhaltern ($) wird Stringtemplate oder Templatezeichenkette genannt.
+Auch der Zugriff auf Parameterlose Public-Methoden der Klassen ist über <code>${MethodName()}</code> möglich.</p>
+<p>In der Templatezeichenkette kannst du über <code>${DeinPropertyName}</code> den Wert aus Deiner C#-Property an dein String-Template binden.
+Das Start und und Endzeichen <code>${&quot; &quot;}</code> kannst du über die Eigenschaften OpeningDelimiter/CloseingDelimiter selbst festlegen.
+Als Standard ist <code>${</code> für das Startzeichen und <code>}</code> für das Endzeichen hinterlegt.</p>
+<p>Es werden gängige Systemdatentypen unterstützt. Eine Übersicht zur Datentypkompatibilität findest Du hier.</p>
+<p><em>Beispiel für ein Problem, welches mit dieser TemplateEngine gelöst werden kann:</em></p>
+<pre><code class="language-XML">Du möchtest aus dieser Eingabe: &lt;MyTag&gt;${ProjektName}&lt;/MyTag&gt;
+
+Eine solche Ausgabe erzeugen: &lt;MyTag&gt;Projektname&lt;/MyTag&gt;
+</code></pre>
+<pre><code class="language-csharp"> TemplateDataModel templateDataModel = new TemplateDataModel
+ {
+     ProjektName = &quot;Projektname&quot;
+ };
+
+string template = &quot;&lt;MyTag&gt;${ProjektName}&lt;/MyTag&gt;&quot;;
+
+TemplateEngine templateEngine = new TemplateEngine(templateDataModel,template);
+string outputString = templateEngine.CreateStringFromTemplate();
+
+Console.Write(outputString); // Ausgabe: &lt;MyTag&gt;Projektname&lt;/MyTag&gt; 
+</code></pre>
+<hr />
+<h2 id="methoden">Methoden</h2>
+<table>
+<thead>
+<tr>
+<th>Methodenname</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>string CreateStringFromTemplate( [string template] )</code></td>
+<td><em>Erzeugt eine Zeichenkette aus dem Datenmodell</em> und dem Template</td>
+</tr>
+<tr>
+<td><code>void LoadTemplateFromFile(string filename)</code></td>
+<td><em>Lädt eine Templatezeichenkette aus einer</em> Datei.</td>
+</tr>
+<tr>
+<td><code>TemplateEngine()</code></td>
+<td>Konstruktor</td>
+</tr>
+<tr>
+<td><code>TemplateEngine(object templateDataModel, string stringTemplate)</code></td>
+<td>Konstruktor</td>
+</tr>
+<tr>
+<td><code>TemplateEngine(object templateDataModel)</code></td>
+<td>Konstruktor</td>
+</tr>
+<tr>
+<td><code>TemplateEngine&lt; T &gt;()</code></td>
+<td>Konstruktor</td>
+</tr>
+<tr>
+<td><code>TemplateEngine&lt; T &gt;(T templateDataModel, string stringTemplate)</code></td>
+<td>Konstruktor</td>
+</tr>
+<tr>
+<td><code>TemplateEngine&lt; T &gt;(T templateDataModel)</code></td>
+<td>Konstruktor</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="propertys">Propertys</h2>
+<table>
+<thead>
+<tr>
+<th>Propertyname</th>
+<th>Datentyp</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OpeningDelimiter</code></td>
+<td>String</td>
+<td>Legt das Stratzeichen für die Propertyersetzung fest</td>
+</tr>
+<tr>
+<td><code>CloseingDelimiter</code></td>
+<td>String</td>
+<td>Legt das Endzeichen für die Propertyersetzung fest</td>
+</tr>
+<tr>
+<td><code>TemplateDataModel</code></td>
+<td>Generic / object</td>
+<td>Modell mit Properys für Datenhaltung</td>
+</tr>
+<tr>
+<td><code>TemplateString</code></td>
+<td>string</td>
+<td>Templatezeichenkette</td>
+</tr>
+<tr>
+<td><code>NullStringValue</code></td>
+<td>string</td>
+<td>Zeichenkette für NULL-Werte</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="beispiele">Beispiele:</h2>
+<h3 id="das-template-laden-und-mit-daten-aus-dem-modell-fullen"><strong>Das Template laden und mit Daten aus dem Modell füllen</strong></h3>
+<pre><code class="language-csharp">// Modell Klasse für die Datenhaltung erstellen
+ TemplateDataModel templateDataModel = new TemplateDataModel
+ {
+     ProjektName = &quot;Projektname&quot;
+ };
+
+string template = &quot;&lt;MyTag&gt;${ProjektName}&lt;/MyTag&gt;&quot;;
+
+TemplateEngine templateEngine = new TemplateEngine(templateDataModel,template);
+string outputString = templateEngine.CreateStringFromTemplate();
+
+Console.Write(outputString); // Ausgabe: &lt;MyTag&gt;Projektname&lt;/MyTag&gt; 
+</code></pre>
+<h3 id="ein-template-aus-einer-datei-laden"><strong>Ein Template aus einer Datei laden</strong></h3>
+<pre><code class="language-csharp">    TemplateDataModel templateDataModel = new TemplateDataModel
+    {
+      ProjektName = &quot;Projektname&quot;,
+      KundeNummer = &quot;1234&quot;,
+      ProjektLink = &quot;https://google.de&quot;,
+      ProjektKuerzel = &quot;PKZL&quot;
+    };
+
+     TemplateEngine templateEngine = new TemplateEngine(templateDataModel);
+     templateEngine.LoadTemplateFromFile(&quot;Html.template.html&quot;);
+     string outputString = templateEngine.CreateStringFromTemplate();
+
+     Console.WriteLine(outputString);
+</code></pre>
+<h3 id="template-und-model-uber-propertyinjection"><strong>Template und Model über PropertyInjection</strong></h3>
+<pre><code class="language-csharp"> TemplateDataModel templateDataModel = new TemplateDataModel
+ {
+     ProjektName = &quot;Projektname&quot;,
+     KundeNummer = &quot;1234&quot;,
+     ProjektLink = &quot;https://google.de&quot;,
+     ProjektKuerzel = &quot;PKZL&quot;
+ };
+
+ string template = &quot;&lt;p&gt;${ProjektName}&lt;/p&gt;&quot;;
+ TemplateEngine templateEngine = new TemplateEngine();
+ templateEngine.TemplateDataModel = templateDataModel;
+ templateEngine.TemplateString = template;
+ Console.WriteLine(templateEngine.CreateStringFromTemplate());
+
+</code></pre>
+<h3 id="template-und-model-uber-dependencyinjection"><strong>Template und Model über DependencyInjection</strong></h3>
+<pre><code class="language-csharp">
+  TemplateDataModel templateDataModel = new TemplateDataModel
+  {
+      ProjektName = &quot;Projektname&quot;,
+      KundeNummer = &quot;1234&quot;,
+      ProjektLink = &quot;https://google.de&quot;,
+      ProjektKuerzel = &quot;PKZL&quot;
+  };
+
+  string template = &quot;&lt;p&gt;${ProjektName}&lt;/p&gt;&quot;;
+  TemplateEngine templateEngine = new TemplateEngine(templateDataModel,template);
+  Console.WriteLine(templateEngine.CreateStringFromTemplate());
+
+
+</code></pre>
+<h3 id="templateengine-mit-propertyinjection-und-generic-type"><strong>TemplateEngine mit PropertyInjection und Generic Type.</strong></h3>
+<pre><code class="language-csharp"> TemplateDataModel templateDataModel = new TemplateDataModel
+ {
+     ProjektName = &quot;Projektname&quot;,
+     KundeNummer = null,
+     ProjektLink = &quot;https://google.de&quot;,
+     ProjektKuerzel = &quot;KZ&quot;
+ };
+
+ string template = &quot;&lt;p&gt;{{ProjektName}}&lt;/p&gt;&lt;p&gt;{{KundeNummer}}&lt;/p&gt;&quot;;
+ TemplateEngine&lt;TemplateDataModel&gt; templateEngine = new TemplateEngine&lt;TemplateDataModel&gt;()
+ {
+     TemplateDataModel = templateDataModel,
+     TemplateString = template,
+     OpeningDelimiter = &quot;{{&quot;,
+     CloseingDelimiter = &quot;}}&quot;,
+     NullStringValue = &quot;???&quot;
+ };
+ Console.WriteLine(templateEngine.CreateStringFromTemplate());
+
+</code></pre>
+<hr />
+<h2 id="datentypkompatibilitat">Datentypkompatibilität</h2>
+<ul>
+<li>✔ String</li>
+<li>✔ Byte</li>
+<li>✔ Short</li>
+<li>✔ UShort</li>
+<li>✔ Long</li>
+<li>✔ ULong</li>
+<li>✔ SByte</li>
+<li>✔ Char</li>
+<li>✔ UInt16</li>
+<li>✔ Int32</li>
+<li>✔ UInt64</li>
+<li>✔ Int16</li>
+<li>✔ Int32</li>
+<li>✔ Int64</li>
+<li>✔ Decimal</li>
+<li>✔ Double</li>
+<li>✔ DateTime</li>
+<li>✔ Boolean</li>
+<li>❌ Object</li>
+<li>❌ CustomClasses</li>
+<li>❌ IList, List, Dictionary, IEnumerable, etc..</li>
+</ul>
+<hr />
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+            createTableOfContent();
+            var autocompleteSuggestionFinder = new AutoCompleteSuggestionFinder("content");
+            autocomplete(document.getElementById("searcher"), autocompleteSuggestionFinder.getContentWords());
+
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+
+            for (i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function () {
+                    this.parentElement.parentElement.querySelector(".nested").classList.toggle("active");
+                    this.classList.toggle("caret-down");
+                });
+            }
+        };
+    </script>
+
+    <footer class="modal-footer">
+        <p> <a href="">Created with mdoc.exe | md-template v0.0.14</a> </p>
+    </footer>
+
+</body>
+</html>

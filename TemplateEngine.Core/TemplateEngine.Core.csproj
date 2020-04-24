@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
+    <Version>1.0.2</Version>
+    <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>Template Engine TemplateEngine StringTemplates C#-Template-Engine</PackageTags>
+    <PackageId>MbSoftLab.TemplateEngine.Core</PackageId>
+    <Company>MbSoftLab</Company>
+    <Authors>MbSoftLab</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>© 2020 MbSoftLab</Copyright>
+    <PackageIcon>Logo-Musik-beats.png</PackageIcon>
+    <PackageIconUrl />
+    <PackageProjectUrl>https://musikbeatssoftwarelab.bitbucket.io/MbSoftlab.TemplateEngine.Core/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Pictures\Logo-Musik-beats.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
