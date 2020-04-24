@@ -17,6 +17,8 @@
     <PackageIcon>Logo-Musik-beats.png</PackageIcon>
     <PackageIconUrl />
     <PackageProjectUrl>https://musikbeatssoftwarelab.bitbucket.io/MbSoftlab.TemplateEngine.Core/</PackageProjectUrl>
+    <RepositoryUrl>https://bitbucket.org/MusikBeatsSoftwareLab/mbsoftlab.templateengine/src/master/</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
