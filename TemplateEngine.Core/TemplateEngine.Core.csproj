@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>1.0.3.1</AssemblyVersion>
-    <FileVersion>1.0.3.1</FileVersion>
-    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <Version>1.0.4</Version>
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -16,8 +16,8 @@
     <Copyright>© 2020 MbSoftLab</Copyright>
     <PackageIcon>Logo-Musik-beats.png</PackageIcon>
     <PackageIconUrl />
-    <PackageProjectUrl>https://musikbeatssoftwarelab.bitbucket.io/MbSoftlab.TemplateEngine.Core/</PackageProjectUrl>
-    <RepositoryUrl>https://bitbucket.org/MusikBeatsSoftwareLab/mbsoftlab.templateengine/src/master/</RepositoryUrl>
+    <PackageProjectUrl>https://mbsoftlab.bitbucket.io/MbSoftlab.TemplateEngine.Core/</PackageProjectUrl>
+    <RepositoryUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
