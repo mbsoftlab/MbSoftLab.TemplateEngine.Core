@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MbSoftLab.TemplateEngine.Framework
+namespace MbSoftLab.TemplateEngine.Core
 {
     public interface ITemplateEngineConfig: ITemplateEngineConfig<object>{ }
     public interface ITemplateEngineConfig<T>

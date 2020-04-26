@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Reflection;
-using System.Linq;
 using System.Collections.Generic;
 
-namespace MbSoftLab.TemplateEngine.Framework
+namespace MbSoftLab.TemplateEngine.Core
 {
     public class TemplateEngine : TemplateEngine<object>
     {
@@ -145,138 +143,7 @@ namespace MbSoftLab.TemplateEngine.Framework
             _templateDataModel = templateDataModel;
             return CreateStringFromTemplate();
         }
-        private void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value)
-        {   
-            switch (valueType.Name)
-            {
-                case "String": 
-                    if (value == null)
-                        _outputString = _outputString.Replace(placeholderValueName, _nullStringValue);
-                    else
-                        _outputString = _outputString.Replace(placeholderValueName, (String)value);
-                    break;
-                case "Byte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((byte)value));
-                    break;
-                case "Short":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((short)value));
-                    break;
-                case "UShort":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ushort)value));
-                    break;
-                case "Long":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((long)value));
-                    break;
-                case "ULong":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ulong)value));
-                    break;
-                case "SByte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((sbyte)value));
-                    break;
-                case "Char":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((char)value));
-                    break;
-                case "UInt16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt16)value));
-                    break;
-                case "UInt32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt32)value));
-                    break;
-                case "UInt64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt64)value));
-                    break;
-                case "Int16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int16)value));
-                    break;
-                case "Int32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int32)value));
-                    break;
-                case "Int64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int64)value));
-                    break;
-                case "Decimal":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value));
-                    break;
-                case "Double":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((double)value));
-                    break;
-                case "DateTime":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((DateTime)value)));
-                    break;
-                case "Boolean":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((bool)value)));
-                    break;
-                default:
-                    if (valueType.FullName.Contains("System.Collections.Generic"))
-                    {
-                        // TODO: Support Types from System.Collections.Generic (List, Dictionary,...)
-                        #if DEBUG
-                        #warning types of System.Collections.Generic are not supported in this Version 
-                        #endif
 
-                        break;
-                    }
-                    throw new NotSupportedException($"Type '{valueType.ToString()}' not supported by TemplateEngine.createStringFromTemplate().");
-            }
-          
-        }
-        private void ProcessTemplateDataModelClassMethods()
-        {
-
-            Type t = _templateDataModel.GetType();
-            List<MethodInfo> methodInfos = t.GetMethods().Where(mi => mi.IsSpecialName == false
-                                                            && !_methodBlacklist.Contains(mi.Name)
-                                                            ).ToList();
-
-            foreach (MethodInfo methodInfo in methodInfos)
-            {
-                if (methodInfo.IsPublic)
-                {
-                    var parameters = methodInfo.GetParameters();
-                    if (parameters.Count() > 0) continue; // TODO: Methoden mit Parameter unterstüzen. Dazu über Methodenname die angegebenen Parameter in der HTML file auslesen
-                   
-                    var instance = Activator.CreateInstance(t);
-                    object methodValue = methodInfo.Invoke(instance, parameters);
-                    Type methodValueType = methodInfo.ReturnType;
-                    string methodName = _openingDelimiter + methodInfo.Name + "()" + _closeingDelimiter;
-                    try
-                    {
-                        this.ReplacePlaceholderWithValue(methodValueType, methodName, methodValue);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-            }
-        }
-        private void ProcessTemplateDataModelClassPropertys()
-        {
-            Type t = _templateDataModel.GetType();
-            PropertyInfo[] propertyInfos = t.GetProperties();
-
-            foreach (PropertyInfo propertyInfo in propertyInfos)
-            {
-                if ((propertyInfo.CanRead))
-                {
-                    object propertyValue = propertyInfo.GetValue(_templateDataModel, null);
-                    string propertyName = _openingDelimiter + propertyInfo.Name + _closeingDelimiter;
-                    Type propertyValueType = null;
-
-                    if (propertyValue != null) propertyValueType = propertyValue?.GetType();
-                    else propertyValueType = typeof(string);
-                    try
-                    {
-                        this.ReplacePlaceholderWithValue(propertyValueType,  propertyName, propertyValue);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
-                }
-            }
-        }
         /// <summary>
         /// Ersetzt alle Eigenschaften aus TemplateDataModel in der Templatezeichenkette. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
         /// Beispiel: public string MyProperty  => ${MyProperty}
@@ -285,9 +152,12 @@ namespace MbSoftLab.TemplateEngine.Framework
         private string CreateStringFromTemplate()
         {
             _outputString=_templateString;
-            ProcessTemplateDataModelClassMethods();
-            ProcessTemplateDataModelClassPropertys();           
-            return _outputString;
+            
+            IPlaceholderValueRaplacer placeholderValueRaplacer = new PlaceholderValueRaplacer(_outputString, _nullStringValue);
+            TemplateDataModelProcessor templateDataModelProcessor = new TemplateDataModelProcessor(_openingDelimiter, _closeingDelimiter, _methodBlacklist, placeholderValueRaplacer);
+            templateDataModelProcessor.ProcessTemplateDataModell(_templateDataModel);
+
+            return placeholderValueRaplacer.OutputString;
         }
 
     }

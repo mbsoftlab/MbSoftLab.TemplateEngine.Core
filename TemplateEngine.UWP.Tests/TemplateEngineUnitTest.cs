@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using MbSoftLab.TemplateEngine.Framework;
+using MbSoftLab.TemplateEngine.Core;
 using System.Collections.Generic;
 
 namespace TemplateEngine.Tests
@@ -177,7 +177,7 @@ namespace TemplateEngine.Tests
         {
 
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string ShouldReturnString = "<TagName>NULL</TagName>";
 
             //Act Ausführen der zu testenden Funktion
@@ -192,7 +192,7 @@ namespace TemplateEngine.Tests
         {
 
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
 
@@ -207,7 +207,7 @@ namespace TemplateEngine.Tests
         public void can_set_a_template()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             string ShouldReturnString = "<MyTag>Nothing</MyTag>";
@@ -232,7 +232,7 @@ namespace TemplateEngine.Tests
                 TemplateDataModel = GetTemplateDataModelDummy(),
                 TemplateString = "<TagName>{{DummyStringProp2}}</TagName>"
             };
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
             sut.Config = templateEngineConfig;
 
             string ShouldReturnString = "<TagName>---</TagName>";
@@ -288,7 +288,7 @@ namespace TemplateEngine.Tests
         public void can_set_a_model_on_creating()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<TagName>${DummyStringProp2}</TagName>";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
@@ -304,7 +304,7 @@ namespace TemplateEngine.Tests
         public void can_set_a_DataModel_with_Annonymos_Type()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(new { DummyStringProp2 = "2" }); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             string ShouldReturnString = "<MyTag>2</MyTag>";
@@ -320,7 +320,7 @@ namespace TemplateEngine.Tests
         public void can_set_a_different_DataModel_with_annonymos_type_after_create_an_instance()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             sut.TemplateDataModel = new { DummyStringProp2 = "5" };
@@ -337,7 +337,7 @@ namespace TemplateEngine.Tests
         public void can_change_the_default_delimiters()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>{{DummyStringProp2}}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>{{DummyStringProp2}}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.OpeningDelimiter = "{{";
             sut.CloseingDelimiter = "}}";
             sut.NullStringValue = "Nothing";
@@ -356,7 +356,7 @@ namespace TemplateEngine.Tests
         public void throws_exeption_if_type_not_supported()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
 
             //Assert Prüfen der Ergebnisse 
@@ -371,7 +371,7 @@ namespace TemplateEngine.Tests
         public void throws_excepton_if_file_load_fail()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             //Assert Prüfen der Ergebnisse 
             Assert.Throws<System.IO.FileNotFoundException>(delegate
@@ -385,7 +385,7 @@ namespace TemplateEngine.Tests
         public void can_handle_a_DataModel_with_a_list_property()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${DummyStringListProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${DummyStringListProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
 
@@ -394,7 +394,7 @@ namespace TemplateEngine.Tests
         public void can_handle_a_Method_in_DataModel_without_Exeption()
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${StringReturningMethod}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${StringReturningMethod}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
         }
 
@@ -407,7 +407,7 @@ namespace TemplateEngine.Tests
         public void can_handle_return_values_from_a_method(string methodName,string returnValue)
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${"+ methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${"+ methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>"+returnValue+"</TagName>";
 
@@ -438,7 +438,7 @@ namespace TemplateEngine.Tests
         public void can_handle_values_from_propertys(string propertyName, string expectedOutput)
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Framework.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
