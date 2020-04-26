@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <AssemblyVersion>1.0.3.1</AssemblyVersion>
+    <FileVersion>1.0.3.1</FileVersion>
     <Version>1.0.3</Version>
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

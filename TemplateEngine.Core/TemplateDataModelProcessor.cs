@@ -9,10 +9,10 @@ namespace MbSoftLab.TemplateEngine.Core
      class TemplateDataModelProcessor
     {
         string _openingDelimiter, _closeingDelimiter;
-   
-        IPlaceholderValueRaplacer _placeholderValueRaplacer;
         private List<String> _methodBlacklist = new List<string>() { "ToString", "GetType", "Equals", "GetHashCode" };
 
+        IPlaceholderValueRaplacer _placeholderValueRaplacer;
+      
         public TemplateDataModelProcessor(string openingDelimiter,string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
         {
             _openingDelimiter = openingDelimiter;
