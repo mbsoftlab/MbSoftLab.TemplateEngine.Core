@@ -9,14 +9,14 @@ namespace MbSoftLab.TemplateEngine.Core
      class TemplateDataModelProcessor
     {
         string _openingDelimiter, _closeingDelimiter;
-        List<String> _methodBlacklist;
+   
         IPlaceholderValueRaplacer _placeholderValueRaplacer;
+        private List<String> _methodBlacklist = new List<string>() { "ToString", "GetType", "Equals", "GetHashCode" };
 
-        public TemplateDataModelProcessor(string openingDelimiter,string closeingDelimiter, List<String> methodBlacklist, IPlaceholderValueRaplacer placeholderValueRaplacer)
+        public TemplateDataModelProcessor(string openingDelimiter,string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
         {
             _openingDelimiter = openingDelimiter;
             _closeingDelimiter = closeingDelimiter;
-            _methodBlacklist = methodBlacklist;
             _placeholderValueRaplacer = placeholderValueRaplacer;
         }
         public void ProcessTemplateDataModell(object templateDataModel)
@@ -30,7 +30,7 @@ namespace MbSoftLab.TemplateEngine.Core
             List<MethodInfo> methodInfos = t.GetMethods().Where(mi => mi.IsSpecialName == false
                                                             && !_methodBlacklist.Contains(mi.Name)
                                                             ).ToList();
-
+            
             foreach (MethodInfo methodInfo in methodInfos)
             {
                 if (methodInfo.IsPublic)

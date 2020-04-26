@@ -25,8 +25,7 @@ namespace MbSoftLab.TemplateEngine.Core
     public class TemplateEngine<T>
     {
         private string _outputString;
-        private List<String> _methodBlacklist = new List<string>() { "ToString", "GetType", "Equals", "GetHashCode" };
-
+  
         #region --- PUBLIC PROPERTYS
         /// <summary>
         /// Startzeichen für eine PlaceholderProperty. Nach diesem Zeichen folgt der Propertyname. Der Defaultwert ist ${.
@@ -103,7 +102,7 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             TemplateString = System.IO.File.ReadAllText(path);
         }
-
+        
         /// <summary>
         /// Ersetzt alle Eigenschaften aus TemplateDataModel im StringTemplate. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
         /// Beispiel: public string MyProperty  => ${MyProperty}
@@ -154,7 +153,7 @@ namespace MbSoftLab.TemplateEngine.Core
             _outputString=_templateString;
             
             IPlaceholderValueRaplacer placeholderValueRaplacer = new PlaceholderValueRaplacer(_outputString, _nullStringValue);
-            TemplateDataModelProcessor templateDataModelProcessor = new TemplateDataModelProcessor(_openingDelimiter, _closeingDelimiter, _methodBlacklist, placeholderValueRaplacer);
+            TemplateDataModelProcessor templateDataModelProcessor = new TemplateDataModelProcessor(_openingDelimiter, _closeingDelimiter, placeholderValueRaplacer);
             templateDataModelProcessor.ProcessTemplateDataModell(_templateDataModel);
 
             return placeholderValueRaplacer.OutputString;
