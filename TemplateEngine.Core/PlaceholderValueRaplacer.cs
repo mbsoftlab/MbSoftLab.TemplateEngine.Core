@@ -18,15 +18,20 @@ namespace MbSoftLab.TemplateEngine.Core
             _outputString = outputString;
             _nullStringValue = nullStringValue;
         } 
+        private string SetStringValueToOutputstring(string placeholderValueName, object value){
+            string result = _outputString;
+            if (value == null)
+                result = _outputString.Replace(placeholderValueName, _nullStringValue);
+            else
+                result = _outputString.Replace(placeholderValueName, (String)value);
+            return result;
+        }
         public void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value)
         {
             switch (valueType.Name)
             {
                 case "String":
-                    if (value == null)
-                        _outputString= _outputString.Replace(placeholderValueName, _nullStringValue);
-                    else
-                        _outputString = _outputString.Replace(placeholderValueName, (String)value);
+                    _outputString= SetStringValueToOutputstring(placeholderValueName, value);
                     break;
                 case "Byte":
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((byte)value));
@@ -83,9 +88,9 @@ namespace MbSoftLab.TemplateEngine.Core
                     if (valueType.FullName.Contains("System.Collections.Generic"))
                     {
                         // TODO: MTC-1 - Support Types from System.Collections.Generic (List, Dictionary,...)
-#if DEBUG
-#warning types of System.Collections.Generic are not supported in this Version 
-#endif
+                    #if DEBUG
+                    #warning types of System.Collections.Generic are not supported in this Version 
+                    #endif
                   
                         break;
                     }
