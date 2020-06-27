@@ -202,7 +202,7 @@ Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag>
 
 ---
  
-## Repo 
+## Repository
 
 https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/
 
@@ -211,3 +211,13 @@ https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/
 ## Issues 
 
 [report an issue](https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/issues?status=new&status=open)
+
+
+---
+## License
+
+Code licensed under [MIT](https://licenses.nuget.org/MIT)
+
+Documentation licensed under  [CC BY 4.0.](https://creativecommons.org/licenses/by/4.0/)
+
+ 
