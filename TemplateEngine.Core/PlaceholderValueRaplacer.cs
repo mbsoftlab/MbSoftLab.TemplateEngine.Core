@@ -94,7 +94,7 @@ namespace MbSoftLab.TemplateEngine.Core
                   
                         break;
                     }
-                    throw new NotSupportedException($"Type '{valueType.ToString()}' not supported by TemplateEngine.createStringFromTemplate().");
+                    throw new NotSupportedException($"Type '{valueType}' not supported by TemplateEngine.createStringFromTemplate().");
                     
             }
 
