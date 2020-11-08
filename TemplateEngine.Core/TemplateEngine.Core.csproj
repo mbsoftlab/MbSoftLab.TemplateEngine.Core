@@ -16,7 +16,7 @@
     <Copyright>© 2020 MbSoftLab</Copyright>
     <PackageIcon>Musikbeats.Logo.png</PackageIcon>
     <PackageIconUrl />
-    <PackageProjectUrl>https://mbsoftlab.bitbucket.io/MbSoftlab.TemplateEngine.Core/</PackageProjectUrl>
+    <PackageProjectUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</PackageProjectUrl>
     <RepositoryUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
