@@ -28,12 +28,12 @@ namespace MbSoftLab.TemplateEngine.Core
   
         #region --- PUBLIC PROPERTYS
         /// <summary>
-        /// Startzeichen für eine PlaceholderProperty. Nach diesem Zeichen folgt der Propertyname. Der Defaultwert ist ${.
+        /// Beginning Char for a PlaceholderProperty. The Defaultvalue ist "${".
         /// </summary>
         public string OpeningDelimiter { get=>_openingDelimiter; set=>_openingDelimiter=value.Trim(); }
         private string _openingDelimiter = "${";
         /// <summary>
-        /// Endzeichen für eine PlaceholderProperty. Dieses Zeichen markiert das ende des Propertynamens. Der Defaultwet ist }.
+        /// Ending Char for a PlaceholderProperty. Der Default ist "}".
         /// </summary>
         public string CloseingDelimiter { get=>_closeingDelimiter; set=>_closeingDelimiter=value.Trim(); }
         private string _closeingDelimiter = "}";  
@@ -43,7 +43,7 @@ namespace MbSoftLab.TemplateEngine.Core
         public T TemplateDataModel { get => _templateDataModel; set => _templateDataModel = value; }
         T _templateDataModel;
         /// <summary>
-        /// Das Template für die Zeichenkette mit ${PlaceholderPropertys}
+        /// The Templatestring with ${PlaceholderPropertys}
         /// </summary>
         public string TemplateString
         {
@@ -55,7 +55,7 @@ namespace MbSoftLab.TemplateEngine.Core
         }
         string _templateString;
         /// <summary>
-        /// Legt die Zeichenkette für NULL-Werte fest. Standard = NULL. 
+        /// Get or Set the string for NULL-Values. Default = NULL. 
         /// </summary>
         public string NullStringValue { get=>_nullStringValue; set=>_nullStringValue=value; }
         string _nullStringValue = "NULL";
@@ -95,19 +95,19 @@ namespace MbSoftLab.TemplateEngine.Core
          
         #endregion
         /// <summary>
-        /// Läd eine Templatezeichenkette aus einer Datei
+        /// Loads a Templatestring from File
         /// </summary>
-        /// <param name="path">Pfad zur Datei mit der Templatezeichenkette.</param>
+        /// <param name="path">Path to File with Templatestring.</param>
         public void LoadTemplateFromFile(string path)
         {
             TemplateString = System.IO.File.ReadAllText(path);
         }
-        
+
         /// <summary>
-        /// Ersetzt alle Eigenschaften aus TemplateDataModel im StringTemplate. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
-        /// Beispiel: public string MyProperty  => ${MyProperty}
+        /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
+        /// Example: public string MyProperty  => ${MyProperty}
         /// </summary>
-        /// <returns>HTML Datei mit Daten aus dem TemplateDataModel </returns>
+        /// <returns>File with Data from TemplateDataModel </returns>
         public string CreateStringFromTemplate(string stringTemplate = null)
         {
             try
@@ -122,10 +122,10 @@ namespace MbSoftLab.TemplateEngine.Core
       
         }
         /// <summary>
-        /// Ersetzt alle Eigenschaften aus TemplateDataModel im StringTemplate. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
-        /// Beispiel: public string MyProperty  => ${MyProperty}
+        /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
+        /// Example: public string MyProperty  => ${MyProperty}
         /// </summary>
-        /// <returns>HTML Datei mit Daten aus dem TemplateDataModel </returns>
+        /// <returns>File with Data from TemplateDataModel </returns>
         public string CreateStringFromTemplate(T templateDataModel, string stringTemplate)
         {
             TemplateString = stringTemplate;
@@ -133,10 +133,10 @@ namespace MbSoftLab.TemplateEngine.Core
             return CreateStringFromTemplate();
         }
         /// <summary>
-        /// Ersetzt alle Eigenschaften aus TemplateDataModel im StringTemplate. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
-        /// Beispiel: public string MyProperty  => ${MyProperty}
+        /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
+        /// Example: public string MyProperty  => ${MyProperty}
         /// </summary>
-        /// <returns>HTML Datei mit Daten aus dem TemplateDataModel </returns>
+        /// <returns>File with Data from TemplateDataModel </returns>
         public string CreateStringFromTemplate(T templateDataModel)
         {
             _templateDataModel = templateDataModel;
@@ -144,10 +144,10 @@ namespace MbSoftLab.TemplateEngine.Core
         }
 
         /// <summary>
-        /// Ersetzt alle Eigenschaften aus TemplateDataModel in der Templatezeichenkette. Name der Eigenschaften im TemplateDataModel und Name der ${Platzhalter} müssen gleich sein. 
-        /// Beispiel: public string MyProperty  => ${MyProperty}
+        /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
+        /// Example: public string MyProperty  => ${MyProperty}
         /// </summary>
-        /// <returns>HTML Datei mit Daten aus dem TemplateDataModel </returns>
+        /// <returns>File with Data from TemplateDataModel </returns>
         private string CreateStringFromTemplate()
         {
             _outputString=_templateString;

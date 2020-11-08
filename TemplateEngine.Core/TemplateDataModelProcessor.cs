@@ -13,7 +13,7 @@ namespace MbSoftLab.TemplateEngine.Core
 
         IPlaceholderValueRaplacer _placeholderValueRaplacer;
       
-        public TemplateDataModelProcessor(string openingDelimiter,string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
+        public TemplateDataModelProcessor(string openingDelimiter, string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
         {
             _openingDelimiter = openingDelimiter;
             _closeingDelimiter = closeingDelimiter;
@@ -37,7 +37,7 @@ namespace MbSoftLab.TemplateEngine.Core
                 {
                     var parameters = methodInfo.GetParameters();
                     if (parameters.Count() > 0) continue; // TODO: Methoden mit Parameter unterstüzen. Dazu über Methodenname die angegebenen Parameter in der HTML file auslesen
-
+                   
                     var instance = Activator.CreateInstance(t);
                     object methodValue = methodInfo.Invoke(instance, parameters);
                     Type methodValueType = methodInfo.ReturnType;
