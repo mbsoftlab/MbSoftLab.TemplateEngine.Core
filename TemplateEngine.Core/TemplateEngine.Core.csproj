@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>1.0.5.1</AssemblyVersion>
-    <FileVersion>1.0.5.1</FileVersion>
-    <Version>1.0.5</Version>
+    <AssemblyVersion>1.0.6.0</AssemblyVersion>
+    <FileVersion>1.0.6.0</FileVersion>
+    <Version>1.0.6</Version>
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -14,7 +14,7 @@
     <Authors>MbSoftLab</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>© 2020 MbSoftLab</Copyright>
-    <PackageIcon>Musikbeats.Logo.png</PackageIcon>
+    <PackageIcon>MbSoftLabLogo.png</PackageIcon>
     <PackageIconUrl />
     <PackageProjectUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</PackageProjectUrl>
     <RepositoryUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</RepositoryUrl>
@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Pictures\Musikbeats.Logo.png">
+    <None Include="..\..\MbSoftLab.SwaggerUiHeaderBuilder\MbSoftLab.SwaggerUiHeaderBuilder\MbSoftLabLogo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
