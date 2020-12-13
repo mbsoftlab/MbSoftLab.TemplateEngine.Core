@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyVersion>1.0.6.1</AssemblyVersion>
-    <FileVersion>1.0.6.1</FileVersion>
-    <Version>1.0.6</Version>
+    <AssemblyVersion>1.0.7.0</AssemblyVersion>
+    <FileVersion>1.0.7.0</FileVersion>
+    <Version>1.0.7</Version>
+	<PackageVersion>1.0.7-preview</PackageVersion>  
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
+    <DocumentationFile>README.md</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>Template Engine TemplateEngine StringTemplates C#-Template-Engine</PackageTags>
@@ -16,8 +18,8 @@
     <Copyright>© 2020 MbSoftLab</Copyright>
     <PackageIcon>MbSoftLabLogo.png</PackageIcon>
     <PackageIconUrl />
-    <PackageProjectUrl>https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mbsoftlab/TemplateEngine/tree/master</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 

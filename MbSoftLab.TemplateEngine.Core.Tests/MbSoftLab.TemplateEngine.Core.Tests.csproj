@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TemplateEngine.Core\TemplateEngine.Core.csproj" />
+    <ProjectReference Include="..\MbSoftLab.TemplateEngine.Core\MbSoftLab.TemplateEngine.Core.csproj" />
   </ItemGroup>
 
 </Project>
