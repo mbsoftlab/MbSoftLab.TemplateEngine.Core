@@ -3,7 +3,7 @@ using System;
 using MbSoftLab.TemplateEngine.Core;
 using System.Collections.Generic;
 
-namespace TemplateEngine.Tests
+namespace TemplateEngineCore.Tests
 {
     public class DummyCustomObject
     {
@@ -407,7 +407,7 @@ namespace TemplateEngine.Tests
         public void can_handle_return_values_from_a_method(string methodName,string returnValue)
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${"+ methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${"+ methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>"+returnValue+"</TagName>";
 
@@ -429,7 +429,6 @@ namespace TemplateEngine.Tests
         [TestCase("DummyIntProp1", "1")]
         [TestCase("DummyInt64Prop", "1234567")]
         [TestCase("DummyDecimalProp", "55")]
-        [TestCase("DummyDoubleProp1", "1,75")]
         [TestCase("DummBoolProp1", "True")]
         [TestCase("DummyBoolQProp1", "True")]// Bool With Null 
         [TestCase("DummyBoolProp2", "False")]
@@ -438,7 +437,26 @@ namespace TemplateEngine.Tests
         public void can_handle_values_from_propertys(string propertyName, string expectedOutput)
         {
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+
+            string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
+
+            //Act Ausführen der zu testenden Funktion
+            string ReturnString = sut.CreateStringFromTemplate();
+
+
+            //Assert Prüfen der Ergebnisse 
+            Assert.AreEqual(ShouldReturnString, ReturnString);
+        }
+
+        [TestCase]
+        public void can_handle_double_values_from_propertys()
+        {
+            string propertyName = "DummyDoubleProp1";
+            string expectedOutput= Convert.ToString(Convert.ToDouble("1,75"));
+
+            //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
 

@@ -4,6 +4,12 @@
         <name>MbSoftLab.TemplateEngine.Core</name>
     </assembly>
     <members>
+        <member name="T:MbSoftLab.TemplateEngine.Core.TemplateEngine">
+            <summary>
+            A simple StringTemplateengine for .NET. <br></br>
+            See <a href="https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/blob/master/README.md"/> for more details
+            </summary>
+        </member>
         <member name="P:MbSoftLab.TemplateEngine.Core.TemplateEngine`1.OpeningDelimiter">
             <summary>
             Beginning Char for a PlaceholderProperty. The Defaultvalue ist "${".

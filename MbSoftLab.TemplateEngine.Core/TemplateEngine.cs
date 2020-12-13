@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
+    /// <summary>
+    /// A simple StringTemplateengine for .NET. <br></br>
+    /// See <a href="https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/blob/master/README.md"/> for more details
+    /// </summary>
     public class TemplateEngine : TemplateEngine<object>
     {
         #region --- CONSTRUCTORS
@@ -20,8 +24,8 @@ namespace MbSoftLab.TemplateEngine.Core
 
         }
         #endregion
-    } 
-
+    }
+   
     public class TemplateEngine<T>
     {
         private string _outputString;
