@@ -5,18 +5,50 @@ using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-    class PlaceholderValueRaplacer: IPlaceholderValueRaplacer
+    class PlaceholderValueRaplacer : IPlaceholderValueRaplacer
     {
-        string _outputString, _nullStringValue;
+        string _outputString;
+        readonly string _nullStringValue;
         public string OutputString => _outputString;
         public CultureInfo CultureInfo { get; set; } = CultureInfo.CreateSpecificCulture("en-US");
-        public PlaceholderValueRaplacer(string outputString,string nullStringValue)
+
+        private Dictionary<string, Action<string, object>> replacementActions = new Dictionary<string, Action<string, object>>();
+
+        public PlaceholderValueRaplacer(string outputString, string nullStringValue)
         {
             _outputString = outputString;
             _nullStringValue = nullStringValue;
-        } 
-        private string SetStringValueToOutputstring(string placeholderValueName, object value){
-            string result = _outputString;
+            RegisterReplacementActions();
+        }
+        private void RegisterReplacementActions()
+        {
+            replacementActions.Add("String", (placeholderValueName, value) => _outputString = SetStringValueToOutputstring(placeholderValueName, value));
+            replacementActions.Add("Byte", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (byte)value));
+            replacementActions.Add("Short", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(short)value));
+            replacementActions.Add("UShort", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(ushort)value));
+            replacementActions.Add("Long", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(long)value));
+            replacementActions.Add("ULong", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (ulong)value));
+            replacementActions.Add("SByte", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (sbyte)value));
+            replacementActions.Add("Char", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(char)value));
+            replacementActions.Add("UInt16", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (UInt16)value));
+            replacementActions.Add("UInt32", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(UInt32)value));
+            replacementActions.Add("UInt64", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (UInt64)value));
+            replacementActions.Add("Int16", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (Int16)value));
+            replacementActions.Add("Int32", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (Int32)value));
+            replacementActions.Add("Int64", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName, (Int64)value));
+            replacementActions.Add("Decimal", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(Decimal)value));
+            replacementActions.Add("Double", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(double)value));
+            replacementActions.Add("DateTime", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,(DateTime)value));
+            replacementActions.Add("Boolean", (placeholderValueName, value) => ReplaceValueInOutputString(placeholderValueName,((bool)value)));
+        }
+        private void ReplaceValueInOutputString(string placeholderValueName,object value)
+        {
+            string replacementForCulture = Convert.ToString(value, CultureInfo);
+            _outputString = _outputString.Replace(placeholderValueName, replacementForCulture);
+        }
+        private string SetStringValueToOutputstring(string placeholderValueName, object value)
+        {
+            string result;
             if (value == null)
                 result = _outputString.Replace(placeholderValueName, _nullStringValue);
             else
@@ -25,76 +57,15 @@ namespace MbSoftLab.TemplateEngine.Core
         }
         public void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value)
         {
-            switch (valueType.Name)
+            if (IsNoCollection(valueType))
             {
-                case "String":
-                    _outputString= SetStringValueToOutputstring(placeholderValueName, value);
-                    break;
-                case "Byte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((byte)value, CultureInfo));
-                    break;
-                case "Short":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((short)value, CultureInfo));
-                    break;
-                case "UShort":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ushort)value, CultureInfo));
-                    break;
-                case "Long":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((long)value, CultureInfo));
-                    break;
-                case "ULong":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ulong)value, CultureInfo));
-                    break;
-                case "SByte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((sbyte)value, CultureInfo));
-                    break;
-                case "Char":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((char)value, CultureInfo));
-                    break;
-                case "UInt16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt16)value, CultureInfo));
-                    break;
-                case "UInt32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt32)value, CultureInfo));
-                    break;
-                case "UInt64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt64)value, CultureInfo));
-                    break;
-                case "Int16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int16)value, CultureInfo));
-                    break;
-                case "Int32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int32)value, CultureInfo));
-                    break;
-                case "Int64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int64)value, CultureInfo));
-                    break;
-                case "Decimal":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value, CultureInfo));
-                    break;
-                case "Double":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((double)value, CultureInfo));
-                    break;
-                case "DateTime":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((DateTime)value, CultureInfo));
-                    break;
-                case "Boolean":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((bool)value)));
-                    break;
-                default:
-                    if (valueType.FullName.Contains("System.Collections.Generic"))
-                    {
-                        // TODO: MTC-1 - Support Types from System.Collections.Generic (List, Dictionary,...)
-                    #if DEBUG
-                    #warning types of System.Collections.Generic are not supported in this Version 
-                    #endif
-                  
-                        break;
-                    }
+                if (replacementActions.ContainsKey(valueType.Name))
+                    replacementActions[valueType.Name].Invoke(placeholderValueName, value);
+                else
                     throw new NotSupportedException($"Type '{valueType}' not supported by TemplateEngine.createStringFromTemplate().");
-                    
             }
-
         }
+        private bool IsNoCollection(Type valueType) => valueType.FullName.Contains("System.Collections.Generic") == false;
+
     }
 }
