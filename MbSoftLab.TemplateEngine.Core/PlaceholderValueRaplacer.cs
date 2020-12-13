@@ -76,7 +76,7 @@ namespace MbSoftLab.TemplateEngine.Core
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value));
                     break;
                 case "Double":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((double)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(Convert.ToDouble(value)));
                     break;
                 case "DateTime":
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((DateTime)value)));

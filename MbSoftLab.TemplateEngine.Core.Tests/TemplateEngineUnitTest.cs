@@ -1,15 +1,15 @@
-﻿using NUnit.Framework;
+﻿using MbSoftLab.TemplateEngine.Core;
+using NUnit.Framework;
 using System;
-using MbSoftLab.TemplateEngine.Core;
-using System.Collections.Generic;
 using System.IO;
 
 namespace TemplateEngineCore.Tests
 {
 
     [TestFixture]
-    public class TemplateEngineUnitTest : UnitTestBase
+    public class TemplateEngineUnitTest:UnitTestBase
     {
+ 
         [Test]
         public void can_create_a_valid_template()
         {
@@ -126,7 +126,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_template_and_model_on_creating()
         {
             //Arrange
-            var sut = new TemplateEngine<TemplateDataModelDummy>(); 
+            var sut = new TemplateEngine<TemplateDataModelDummy>();
             sut.NullStringValue = "Nothing";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
 
@@ -141,7 +141,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_model_on_creating()
         {
             //Arrange 
-            var sut = new TemplateEngine(); 
+            var sut = new TemplateEngine();
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<TagName>${DummyStringProp2}</TagName>";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
@@ -250,18 +250,15 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${StringReturningMethod}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
         }
-
-
         [Test]
         [TestCase("StringReturningMethod()", "StringReturnValue")]
         [TestCase("BoolReturningMethod()", "True")]
-      
-        public void can_handle_return_values_from_a_method(string methodName,string returnValue)
+        public void can_handle_return_values_from_a_method(string methodName, string returnValue)
         {
             //Arrange 
-            var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${"+ methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-            string ShouldReturnString = "<TagName>"+returnValue+"</TagName>";
+            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
@@ -270,8 +267,7 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-
-        [TestCase] 
+        [TestCase]
         public void can_handle_return_values_from_IntReturningMethod()
         {
             //Arrange 
@@ -293,7 +289,8 @@ namespace TemplateEngineCore.Tests
         {
             //Arrange 
             string methodName = "DoubleReturningMethod()";
-            string returnValue = Convert.ToString(Convert.ToDouble("1,2"));
+            object value = "1,2";
+            string returnValue = Convert.ToString(Convert.ToDouble(value)) ;
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
@@ -318,7 +315,6 @@ namespace TemplateEngineCore.Tests
         [TestCase("DummyBoolQProp1", "True")]// Bool With Null 
         [TestCase("DummyBoolProp2", "False")]
         [TestCase("DummyBoolQProp2", "NULL")]
-  
         public void can_handle_values_from_propertys(string propertyName, string expectedOutput)
         {
             //Arrange 
@@ -333,12 +329,11 @@ namespace TemplateEngineCore.Tests
             //Assert  
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-
         [TestCase]
         public void can_handle_double_values_from_propertys()
         {
             string propertyName = "DummyDoubleProp1";
-            string expectedOutput= Convert.ToString(Convert.ToDouble("1,75"));
+            string expectedOutput = Convert.ToString(Convert.ToDouble("1,75"));
 
             //Arrange   
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
@@ -352,7 +347,7 @@ namespace TemplateEngineCore.Tests
             //Assert Prüfen der Ergebnisse 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-        [TestCase] 
+        [TestCase]
         public void can_handle_date_values_from_propertys()
         {
             string propertyName = "DummyDateTimeProp1";
@@ -370,7 +365,6 @@ namespace TemplateEngineCore.Tests
             //Assert Prüfen der Ergebnisse 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-
 
     }
 }
