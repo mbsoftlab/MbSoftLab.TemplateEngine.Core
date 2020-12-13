@@ -284,7 +284,7 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-        [TestCase]
+        //[TestCase]
         public void can_handle_return_values_from_DoubleReturningMethod()
         {
             //Arrange 
