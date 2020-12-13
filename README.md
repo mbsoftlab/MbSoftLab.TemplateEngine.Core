@@ -78,7 +78,7 @@ PM> Install-Package MbSoftLab.TemplateEngine.Core
 |`TemplateDataModel`                      |Generic / object  |Modell with Properys for Dataholding                                     |
 |`TemplateString`                      |string            |Templatestring                                                     |
 |`NullStringValue`                     |string            |String for NULL-Values                                              |
-|`CultureInfo`                     |CultureInfo           |Culture for Doble and DateTime values                                   |
+|`CultureInfo`                     |CultureInfo           |Culture for Double and DateTime values                                   |
 
 ---
 
