@@ -5,6 +5,8 @@
 *Codequality (master branch)*
 [![CodeFactor](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/badge)](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core)
 
+*Codequality (develop branch)*
+[![CodeFactor](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/badge/develop)](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/overview/develop)
 ```csharp
 namespace MbSoftLab.TemplateEngine.Core
 {
