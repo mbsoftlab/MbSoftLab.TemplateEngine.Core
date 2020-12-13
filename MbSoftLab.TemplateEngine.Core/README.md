@@ -21,7 +21,8 @@ Also you can access parameterless public methods of TemplateDataModell classes b
 
 
 The default is `${` for the start delimiter and `}` for the end delimiter.
- 
+
+
 ```csharp
  Person person = new Person
  {
