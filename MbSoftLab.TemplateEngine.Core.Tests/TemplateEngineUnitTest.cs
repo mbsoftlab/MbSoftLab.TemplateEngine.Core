@@ -8,72 +8,8 @@ namespace TemplateEngineCore.Tests
 {
 
     [TestFixture]
-    public class TemplateEngineUnitTest
+    public class TemplateEngineUnitTest : UnitTestBase
     {
- 
-        private TemplateDataModelDummy GetTemplateDataModelDummy()
-        {
-            TemplateDataModelDummy templateDataModelFake = new TemplateDataModelDummy
-            {
-                DummyStringProp1 = "DummyStringProp1Value",
-                DummyIntProp1 = 1,
-                DummBoolProp1 = true,
-                DummyBoolQProp1 = true,
-                DummyDoubleProp1 = 1.75,
-                DummyDateTimeProp1 = DateTime.Parse("01.01.2020 00:00:00"),
-                //DummyObjectProp1 = new DummyCustomObject(),
-                DummyInt64Prop = 1234567,
-                DummyUInt16 = 8,
-                DummyInt16 = -8,
-                DummyDecimalProp = 55,
-                DummyCharProp = 'c',
-                DummyByteProp = 255,
-                DummySByteProp = -5
-
-            };
-
-            return templateDataModelFake;
-        }
-        private TemplateDataModelDummy GetAWrongTemplateDataModelDummy()
-        {
-            TemplateDataModelDummy templateDataModelFake = new TemplateDataModelDummy
-            {
-                DummyStringProp1 = "DummyStringProp1Value",
-                DummyIntProp1 = 1,
-                DummBoolProp1 = true,
-                DummyBoolQProp1 = true,
-                DummyDoubleProp1 = 1.75,
-                DummyObjectProp1 = new DummyCustomObject(),
-                DummyInt64Prop = 1234567,
-                DummyUInt16 = 8,
-                DummyInt16 = -8,
-                DummyDecimalProp = 55,
-                DummyCharProp = 'c',
-                DummyByteProp = 255,
-                DummySByteProp = -5
-
-            };
-
-            return templateDataModelFake;
-        }
-        private TemplateDataModelDummyWithList GetTemplateDataModelDummyWithListAndMethod()
-        {
-            TemplateDataModelDummyWithList templateDataModelFake = new TemplateDataModelDummyWithList
-            {
-                DummyStringProp1 = "DummyStringProp1Value",
-                DummyStringListProp2 = new List<string>() { "asd", "asd" }
-
-            };
-
-            return templateDataModelFake;
-        }
-        private TemplateDataModelDummyWithMethods GetTemplateDataModelDummyWithMethods()
-        {
-            TemplateDataModelDummyWithMethods templateDataModelFake = new TemplateDataModelDummyWithMethods();
-
-            return templateDataModelFake;
-        }
-
         [Test]
         public void can_create_a_valid_template()
         {
@@ -319,7 +255,7 @@ namespace TemplateEngineCore.Tests
         [Test]
         [TestCase("StringReturningMethod()", "StringReturnValue")]
         [TestCase("BoolReturningMethod()", "True")]
-        [TestCase("IntReturningMethod()", "12")]
+      
         public void can_handle_return_values_from_a_method(string methodName,string returnValue)
         {
             //Arrange 
@@ -335,8 +271,25 @@ namespace TemplateEngineCore.Tests
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
 
+        [TestCase] 
+        public void can_handle_return_values_from_IntReturningMethod()
+        {
+            //Arrange 
+            string methodName = "IntReturningMethod()";
+            string returnValue = Convert.ToString(Convert.ToInt32("12"));
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+
+            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
+
+            //Act
+            string ReturnString = sut.CreateStringFromTemplate();
+
+
+            //Assert 
+            Assert.AreEqual(ShouldReturnString, ReturnString);
+        }
         [TestCase]
-        public void can_handle_return_values_from_a_method()
+        public void can_handle_return_values_from_DoubleReturningMethod()
         {
             //Arrange 
             string methodName = "DoubleReturningMethod()";
