@@ -333,7 +333,8 @@ namespace TemplateEngineCore.Tests
         public void can_handle_double_values_from_propertys()
         {
             string propertyName = "DummyDoubleProp1";
-            string expectedOutput = Convert.ToString(Convert.ToDouble("1,75"));
+            object value = "1,75";
+            string expectedOutput = Convert.ToString(Convert.ToDouble(value));
 
             //Arrange   
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
