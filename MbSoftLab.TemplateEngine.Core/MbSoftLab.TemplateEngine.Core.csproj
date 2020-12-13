@@ -7,7 +7,7 @@
     <Version>1.0.7</Version>
 	<PackageVersion>1.0.7-preview</PackageVersion>  
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
-    <DocumentationFile>README.md</DocumentationFile>
+    <DocumentationFile>Documentation.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>Template Engine TemplateEngine StringTemplates C#-Template-Engine</PackageTags>
