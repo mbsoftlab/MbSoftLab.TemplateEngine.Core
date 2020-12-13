@@ -1,4 +1,8 @@
 ﻿# MbSoftLab.TemplateEngine.Core
+
+
+![BuildFromDevelop](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/BuildFromDevelop/badge.svg?branch=develop) ![BuildFromMaster](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/BuildFromMaster/badge.svg?branch=master)![Release](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/Release/badge.svg)
+ 
 ```csharp
 namespace MbSoftLab.TemplateEngine.Core
 {
