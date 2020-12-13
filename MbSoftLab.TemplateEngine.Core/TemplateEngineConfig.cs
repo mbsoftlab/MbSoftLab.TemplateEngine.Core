@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-    public interface ITemplateEngineConfig: ITemplateEngineConfig<object>{ }
-    public interface ITemplateEngineConfig<T>
-    {
-        string OpeningDelimiter { get; set; }
-        string CloseingDelimiter { get; set; }
-        string TemplateString { get; set; }
-        T TemplateDataModel { get; set; }
-        string NullStringValue { get; set; }
-    }
+ 
+    /// <summary>
+    /// <inheritdoc cref="ITemplateEngineConfig"/>
+    /// </summary>
     public class TemplateEngineConfig : TemplateEngineConfig<object>{ }
+    /// <summary>
+    /// <inheritdoc cref="ITemplateEngineConfig{T}"/>
+    /// </summary>
     public class TemplateEngineConfig<T> : ITemplateEngineConfig<T>
     {
+        public CultureInfo CultureInfo { get; set; } = CultureInfo.CreateSpecificCulture("en-US");
         public string OpeningDelimiter { get => _openingDelimiter; set => _openingDelimiter=value.Trim(); }
         private string _openingDelimiter;
         public string CloseingDelimiter { get => _closeingDelimiter; set => _closeingDelimiter=value.Trim(); }

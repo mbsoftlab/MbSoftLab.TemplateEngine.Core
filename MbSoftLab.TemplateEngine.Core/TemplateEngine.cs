@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
+    /// <summary>
+    /// A simple StringTemplateengine for .NET. <br></br>
+    /// See <a href="https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/blob/master/README.md"/> for more details
+    /// </summary>
     public class TemplateEngine : TemplateEngine<object>
     {
         #region --- CONSTRUCTORS
@@ -20,8 +25,8 @@ namespace MbSoftLab.TemplateEngine.Core
 
         }
         #endregion
-    } 
-
+    }
+   
     public class TemplateEngine<T>
     {
         private string _outputString;
@@ -59,7 +64,7 @@ namespace MbSoftLab.TemplateEngine.Core
         /// </summary>
         public string NullStringValue { get=>_nullStringValue; set=>_nullStringValue=value; }
         string _nullStringValue = "NULL";
-
+        public CultureInfo CultureInfo { get; set; } = CultureInfo.CreateSpecificCulture("en-US");
 
         public ITemplateEngineConfig<T> Config {
             get=>_config; 
@@ -71,6 +76,7 @@ namespace MbSoftLab.TemplateEngine.Core
                 this.CloseingDelimiter = _config.CloseingDelimiter;
                 this.TemplateDataModel = _config.TemplateDataModel;
                 this.TemplateString = _config.TemplateString;
+                this.CultureInfo = _config.CultureInfo;
             } 
         }
         private ITemplateEngineConfig<T> _config;
@@ -153,6 +159,7 @@ namespace MbSoftLab.TemplateEngine.Core
             _outputString=_templateString;
             
             IPlaceholderValueRaplacer placeholderValueRaplacer = new PlaceholderValueRaplacer(_outputString, _nullStringValue);
+            placeholderValueRaplacer.CultureInfo = CultureInfo;
             TemplateDataModelProcessor templateDataModelProcessor = new TemplateDataModelProcessor(_openingDelimiter, _closeingDelimiter, placeholderValueRaplacer);
             templateDataModelProcessor.ProcessTemplateDataModell(_templateDataModel);
 

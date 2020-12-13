@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS1030: #Warnungsdirektive
+dotnet_diagnostic.CS1030.severity = warning
+
+# CS1591: Fehledes XML-Kommentar für öffentlich sichtbaren Typ oder Element
+dotnet_diagnostic.CS1591.severity = silent

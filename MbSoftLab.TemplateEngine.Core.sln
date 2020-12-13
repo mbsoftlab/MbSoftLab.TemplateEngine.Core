@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateEngine.Core.Tests", "TemplateEngine.UWP.Tests\TemplateEngine.Core.Tests.csproj", "{730ED57E-5030-43D9-BFC3-1E52B67D9E4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MbSoftLab.TemplateEngine.Core.Tests", "MbSoftLab.TemplateEngine.Core.Tests\MbSoftLab.TemplateEngine.Core.Tests.csproj", "{730ED57E-5030-43D9-BFC3-1E52B67D9E4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateEngine.Core", "TemplateEngine.Core\TemplateEngine.Core.csproj", "{CA5BFFAC-ADA4-478B-8B13-B3AF81FE4A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MbSoftLab.TemplateEngine.Core", "MbSoftLab.TemplateEngine.Core\MbSoftLab.TemplateEngine.Core.csproj", "{CA5BFFAC-ADA4-478B-8B13-B3AF81FE4A05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
