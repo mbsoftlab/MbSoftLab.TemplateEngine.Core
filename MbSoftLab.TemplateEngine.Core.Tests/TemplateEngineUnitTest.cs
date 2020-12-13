@@ -2,6 +2,7 @@
 using System;
 using MbSoftLab.TemplateEngine.Core;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TemplateEngineCore.Tests
 {
@@ -93,7 +94,7 @@ namespace TemplateEngineCore.Tests
         {
 
             //Arrange
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string ShouldReturnString = "<TagName>NULL</TagName>";
 
             //Act Ausführen der zu testenden Funktion
@@ -108,7 +109,7 @@ namespace TemplateEngineCore.Tests
         {
 
             //Arrange 
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
 
@@ -123,7 +124,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_template()
         {
             //Arrange
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             string ShouldReturnString = "<MyTag>Nothing</MyTag>";
@@ -148,7 +149,7 @@ namespace TemplateEngineCore.Tests
                 TemplateDataModel = GetTemplateDataModelDummy(),
                 TemplateString = "<TagName>{{DummyStringProp2}}</TagName>"
             };
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
             sut.Config = templateEngineConfig;
 
             string ShouldReturnString = "<TagName>---</TagName>";
@@ -204,7 +205,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_model_on_creating()
         {
             //Arrange 
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(); 
+            var sut = new TemplateEngine(); 
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<TagName>${DummyStringProp2}</TagName>";
             string ShouldReturnString = "<TagName>Nothing</TagName>";
@@ -220,7 +221,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_DataModel_with_Annonymos_Type()
         {
             //Arrange   
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(new { DummyStringProp2 = "2" }); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             string ShouldReturnString = "<MyTag>2</MyTag>";
@@ -236,7 +237,7 @@ namespace TemplateEngineCore.Tests
         public void can_set_a_different_DataModel_with_annonymos_type_after_create_an_instance()
         {
             //Arrange
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             sut.TemplateDataModel = new { DummyStringProp2 = "5" };
@@ -253,7 +254,7 @@ namespace TemplateEngineCore.Tests
         public void can_change_the_default_delimiters()
         {
             //Arrange  
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>{{DummyStringProp2}}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(new { DummyStringProp2 = "2" }, "<TagName>{{DummyStringProp2}}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.OpeningDelimiter = "{{";
             sut.CloseingDelimiter = "}}";
             sut.NullStringValue = "Nothing";
@@ -272,7 +273,7 @@ namespace TemplateEngineCore.Tests
         public void throws_exeption_if_type_not_supported()
         {
             //Arrange 
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
 
             //Assert
@@ -287,10 +288,10 @@ namespace TemplateEngineCore.Tests
         public void throws_excepton_if_file_load_fail()
         {
             //Arrange  
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             //Assert 
-            Assert.Throws<System.IO.FileNotFoundException>(delegate
+            Assert.Throws<FileNotFoundException>(delegate
             {
 
                 //Act
@@ -301,7 +302,7 @@ namespace TemplateEngineCore.Tests
         public void can_handle_a_DataModel_with_a_list_property()
         {
             //Arrange 
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${DummyStringListProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${DummyStringListProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             //Act / Assert 
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
 
@@ -310,7 +311,7 @@ namespace TemplateEngineCore.Tests
         public void can_handle_a_Method_in_DataModel_without_Exeption()
         {
             //Arrange   
-            var sut = new MbSoftLab.TemplateEngine.Core.TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${StringReturningMethod}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>${StringReturningMethod}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
         }
 
@@ -318,8 +319,7 @@ namespace TemplateEngineCore.Tests
         [Test]
         [TestCase("StringReturningMethod()", "StringReturnValue")]
         [TestCase("BoolReturningMethod()", "True")]
-        [TestCase("IntReturningMethod()", "12")]  
-        [TestCase("DoubleReturningMethod()", "1,2")]
+        [TestCase("IntReturningMethod()", "12")]
         public void can_handle_return_values_from_a_method(string methodName,string returnValue)
         {
             //Arrange 
@@ -334,8 +334,24 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-       
-      
+
+        [TestCase]
+        public void can_handle_return_values_from_a_method()
+        {
+            //Arrange 
+            string methodName = "DoubleReturningMethod()";
+            string returnValue = Convert.ToString(Convert.ToDouble("1,2"));
+            var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
+
+            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
+
+            //Act
+            string ReturnString = sut.CreateStringFromTemplate();
+
+
+            //Assert 
+            Assert.AreEqual(ShouldReturnString, ReturnString);
+        }
         [Test]
         [TestCase("DummyByteProp", "255")]
         [TestCase("DummySByteProp", "-5")]
@@ -365,7 +381,7 @@ namespace TemplateEngineCore.Tests
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
 
-        [TestCase]//[TestCase("DummyDoubleProp1", "1,75")]
+        [TestCase]
         public void can_handle_double_values_from_propertys()
         {
             string propertyName = "DummyDoubleProp1";
@@ -383,7 +399,7 @@ namespace TemplateEngineCore.Tests
             //Assert Prüfen der Ergebnisse 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-        [TestCase] //[TestCase("DummyDateTimeProp1", "01.01.2020 00:00:00")]
+        [TestCase] 
         public void can_handle_date_values_from_propertys()
         {
             string propertyName = "DummyDateTimeProp1";
