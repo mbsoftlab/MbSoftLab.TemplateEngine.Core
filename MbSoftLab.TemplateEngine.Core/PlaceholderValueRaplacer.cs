@@ -73,7 +73,7 @@ namespace MbSoftLab.TemplateEngine.Core
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int64)value));
                     break;
                 case "Decimal":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(Convert.ToDecimal(value)));
                     break;
                 case "Double":
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(Convert.ToDouble(value)));

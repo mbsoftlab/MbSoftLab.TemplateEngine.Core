@@ -290,7 +290,7 @@ namespace TemplateEngineCore.Tests
             //Arrange 
             string methodName = "DoubleReturningMethod()";
             object value = "1,2";
-            string returnValue = Convert.ToString(Convert.ToDouble(value)) ;
+            string returnValue =  Convert.ToString(Convert.ToDouble(value)) ;
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
