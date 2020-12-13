@@ -1,6 +1,7 @@
 ﻿using MbSoftLab.TemplateEngine.Core;
 using NUnit.Framework;
 using System;
+using System.Globalization;
 using System.IO;
 
 namespace TemplateEngineCore.Tests
@@ -284,13 +285,13 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-        //[TestCase]
+        [TestCase]
         public void can_handle_return_values_from_DoubleReturningMethod()
         {
             //Arrange 
             string methodName = "DoubleReturningMethod()";
-            object value = "1,2";
-            string returnValue =  Convert.ToString(Convert.ToDouble(value)) ;
+            double value = 1.2;
+            string returnValue =  Convert.ToString(value,CultureInfo.CreateSpecificCulture("de-DE"));
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
@@ -333,8 +334,8 @@ namespace TemplateEngineCore.Tests
         public void can_handle_double_values_from_propertys()
         {
             string propertyName = "DummyDoubleProp1";
-            object value = "1,75";
-            string expectedOutput = Convert.ToString(Convert.ToDouble(value));
+            double value = 1.75;
+            string expectedOutput = Convert.ToString(value, CultureInfo.CreateSpecificCulture("de-DE"));
 
             //Arrange   
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
