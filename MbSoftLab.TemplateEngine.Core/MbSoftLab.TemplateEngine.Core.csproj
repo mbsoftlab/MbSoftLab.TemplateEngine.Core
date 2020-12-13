@@ -24,7 +24,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\MbSoftLab.SwaggerUiHeaderBuilder\MbSoftLab.SwaggerUiHeaderBuilder\MbSoftLabLogo.png">
+    <None Include="..\MbSoftLabLogo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="MbSoftLabLogo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
