@@ -4,6 +4,17 @@
         <name>MbSoftLab.TemplateEngine.Core</name>
     </assembly>
     <members>
+        <member name="T:MbSoftLab.TemplateEngine.Core.ITemplateEngineConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MbSoftLab.TemplateEngine.Core.ITemplateEngineConfig`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
         <member name="T:MbSoftLab.TemplateEngine.Core.TemplateEngine">
             <summary>
             A simple StringTemplateengine for .NET. <br></br>
@@ -68,6 +79,16 @@
             Example: public string MyProperty  => ${MyProperty}
             </summary>
             <returns>File with Data from TemplateDataModel </returns>
+        </member>
+        <member name="T:MbSoftLab.TemplateEngine.Core.TemplateEngineConfig">
+            <summary>
+            <inheritdoc cref="T:MbSoftLab.TemplateEngine.Core.ITemplateEngineConfig"/>
+            </summary>
+        </member>
+        <member name="T:MbSoftLab.TemplateEngine.Core.TemplateEngineConfig`1">
+            <summary>
+            <inheritdoc cref="T:MbSoftLab.TemplateEngine.Core.ITemplateEngineConfig`1"/>
+            </summary>
         </member>
     </members>
 </doc>

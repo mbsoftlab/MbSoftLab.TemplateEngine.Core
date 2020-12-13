@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-    interface IPlaceholderValueRaplacer
-    {
-        void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value);
-        string OutputString { get; }
-    }
     class PlaceholderValueRaplacer: IPlaceholderValueRaplacer
     {
         string _outputString, _nullStringValue;
         public string OutputString => _outputString;
+        public CultureInfo CultureInfo { get; set; } = CultureInfo.CreateSpecificCulture("en-US");
         public PlaceholderValueRaplacer(string outputString,string nullStringValue)
         {
             _outputString = outputString;
@@ -34,52 +31,52 @@ namespace MbSoftLab.TemplateEngine.Core
                     _outputString= SetStringValueToOutputstring(placeholderValueName, value);
                     break;
                 case "Byte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((byte)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((byte)value, CultureInfo));
                     break;
                 case "Short":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((short)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((short)value, CultureInfo));
                     break;
                 case "UShort":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ushort)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ushort)value, CultureInfo));
                     break;
                 case "Long":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((long)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((long)value, CultureInfo));
                     break;
                 case "ULong":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ulong)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((ulong)value, CultureInfo));
                     break;
                 case "SByte":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((sbyte)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((sbyte)value, CultureInfo));
                     break;
                 case "Char":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((char)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((char)value, CultureInfo));
                     break;
                 case "UInt16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt16)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt16)value, CultureInfo));
                     break;
                 case "UInt32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt32)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt32)value, CultureInfo));
                     break;
                 case "UInt64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt64)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((UInt64)value, CultureInfo));
                     break;
                 case "Int16":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int16)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int16)value, CultureInfo));
                     break;
                 case "Int32":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int32)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int32)value, CultureInfo));
                     break;
                 case "Int64":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int64)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Int64)value, CultureInfo));
                     break;
                 case "Decimal":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((Decimal)value, CultureInfo));
                     break;
                 case "Double":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((double)value));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((double)value, CultureInfo));
                     break;
                 case "DateTime":
-                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((DateTime)value)));
+                    _outputString = _outputString.Replace(placeholderValueName, Convert.ToString((DateTime)value, CultureInfo));
                     break;
                 case "Boolean":
                     _outputString = _outputString.Replace(placeholderValueName, Convert.ToString(((bool)value)));
