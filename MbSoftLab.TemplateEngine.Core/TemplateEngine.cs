@@ -102,7 +102,6 @@ namespace MbSoftLab.TemplateEngine.Core
          
         #endregion
       
-
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
         /// Example: public string MyProperty  => ${MyProperty}
@@ -142,8 +141,6 @@ namespace MbSoftLab.TemplateEngine.Core
             _templateDataModel = templateDataModel;
             return CreateStringFromTemplate();
         }
- 
- 
 
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
