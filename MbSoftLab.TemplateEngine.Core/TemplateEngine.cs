@@ -43,7 +43,7 @@ namespace MbSoftLab.TemplateEngine.Core
         public string CloseingDelimiter { get=>_closeingDelimiter; set=>_closeingDelimiter=value.Trim(); }
         private string _closeingDelimiter = "}";  
         /// <summary>
-        /// Datenmodell mit Propertys zum befüllen der ${PlaceholderPropertys} im Template. Name der Propertys im DataModel muss den Namen in den ${Placeholder} entsprechen
+        /// Model with propertys to fill ${PlaceholderPropertys} in the template. The propertynames at DataModel has to be equal with ${Placeholder}
         /// </summary>
         public T TemplateDataModel { get => _templateDataModel; set => _templateDataModel = value; }
         T _templateDataModel;
