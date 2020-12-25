@@ -21,7 +21,6 @@ namespace TemplateEngineCore.Tests
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -50,7 +49,6 @@ namespace TemplateEngineCore.Tests
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -64,7 +62,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -80,7 +77,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -106,7 +102,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -131,7 +126,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -145,7 +139,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>");
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -162,7 +155,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy());
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -177,7 +169,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -194,7 +185,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -214,7 +204,6 @@ namespace TemplateEngineCore.Tests
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -224,14 +213,12 @@ namespace TemplateEngineCore.Tests
             //Arrange 
             var sut = new TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-
             //Assert
             Assert.Throws<NotSupportedException>(delegate
             {
                 //Act 
                 sut.CreateStringFromTemplate();
             });
-
         }
         [Test]
         public void throws_excepton_if_file_load_fail()
@@ -276,7 +263,6 @@ namespace TemplateEngineCore.Tests
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -292,7 +278,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -310,7 +295,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -370,7 +354,6 @@ namespace TemplateEngineCore.Tests
 
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert Prüfen der Ergebnisse 
             Assert.AreEqual(ShouldReturnString, ReturnString);
