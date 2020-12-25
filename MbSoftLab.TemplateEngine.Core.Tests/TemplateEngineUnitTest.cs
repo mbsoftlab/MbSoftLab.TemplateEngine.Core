@@ -12,7 +12,7 @@ namespace TemplateEngineCore.Tests
     {
 
         [Test]
-        public void can_create_a_valid_template()
+        public void can_create_a_valid_string_from_template()
         {
 
             //Arrange  
@@ -27,7 +27,7 @@ namespace TemplateEngineCore.Tests
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
         [Test]
-        public void can_create_a_valid_template_from_json()
+        public void can_create_a_valid_string_from_template_with_json()
         {
 
             //Arrange  
