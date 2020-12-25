@@ -37,7 +37,7 @@ namespace TemplateEngineCore.Tests
             string jsonData = GetDummyJson();
 
             //Act Ausführen der zu testenden Funktion
-            string ReturnString = sut.CreateStringFromJson(jsonData);
+            string ReturnString = sut.CreateStringFromTemplateWithJson(jsonData);
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);

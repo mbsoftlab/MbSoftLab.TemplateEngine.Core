@@ -7,7 +7,7 @@ namespace MbSoftLab.TemplateEngine.Core
         /// <summary>
         /// Load the TemplateDataModel from JSON and builds a String with this Data
         /// </summary>
-        public static string CreateStringFromJson<T>(this TemplateEngine<T> templateEngine, string jsonData)
+        public static string CreateStringFromTemplateWithJson<T>(this TemplateEngine<T> templateEngine, string jsonData)
         {
             templateEngine.TemplateDataModel = JsonSerializer.Deserialize<T>(jsonData);
             return templateEngine.CreateStringFromTemplate();
