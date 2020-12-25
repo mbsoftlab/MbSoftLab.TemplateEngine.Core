@@ -33,13 +33,11 @@ namespace TemplateEngineCore.Tests
             //Arrange  
             var sut = new TemplateEngine<TemplateDataModelDummy>(); //SUT = [S]ystem [U]nder [T]est
             sut.TemplateString = "<TagName>${DummyStringProp1}</TagName>";
-           
             string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
-
             string jsonData = GetDummyJson();
+
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromJson(jsonData);
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
