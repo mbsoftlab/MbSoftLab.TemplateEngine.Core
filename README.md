@@ -1,4 +1,12 @@
 ﻿# MbSoftLab.TemplateEngine.Core
+
+![BuildFromDevelop](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/BuildFromDevelop/badge.svg?branch=develop) ![BuildFromMaster](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/BuildFromMaster/badge.svg?branch=master)![Release](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/workflows/Release/badge.svg) 
+
+*Codequality (master branch)*
+[![CodeFactor](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/badge)](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core)
+
+*Codequality (develop branch)*
+[![CodeFactor](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/badge/develop)](https://www.codefactor.io/repository/github/mbsoftlab/mbsoftlab.templateengine.core/overview/develop)
 ```csharp
 namespace MbSoftLab.TemplateEngine.Core
 {
@@ -21,8 +29,7 @@ Also you can access parameterless public methods of TemplateDataModell classes b
 
 
 The default is `${` for the start delimiter and `}` for the end delimiter.
- 
-![picture of what can done by the TemplateEngine](https://mbsoftlab.bitbucket.io/MbSoftlab.TemplateEngine.Core/ProblemDescription.PNG "What the Engine can do")
+
 
 ```csharp
  Person person = new Person
@@ -75,6 +82,7 @@ PM> Install-Package MbSoftLab.TemplateEngine.Core
 |`TemplateDataModel`                      |Generic / object  |Modell with Properys for Dataholding                                     |
 |`TemplateString`                      |string            |Templatestring                                                     |
 |`NullStringValue`                     |string            |String for NULL-Values                                              |
+|`CultureInfo`                     |CultureInfo           |Culture for Double and DateTime values                                   |
 
 ---
 
@@ -85,24 +93,23 @@ PM> Install-Package MbSoftLab.TemplateEngine.Core
 // Create a modell Class for Data
  TemplateDataModel templateDataModel = new TemplateDataModel
  {
-     ProjektName = "Projektname"
+     ProjectName = "Projektname"
  };
 
-string template = "<MyTag>${ProjektName}</MyTag>";
+string template = "<MyTag>${ProjectName}</MyTag>";
 
 TemplateEngine templateEngine = new TemplateEngine(templateDataModel,template);
 string outputString = templateEngine.CreateStringFromTemplate();
 
-Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag> 
+Console.Write(outputString); // Output: <MyTag>ProjectName</MyTag> 
 ```
 ### **Load template from file**
 ```csharp
     TemplateDataModel templateDataModel = new TemplateDataModel
     {
-      ProjektName = "Projektname",
-      KundeNummer = "1234",
-      ProjektLink = "https://google.de",
-      ProjektKuerzel = "PKZL"
+      ProjectName = "Projektname",
+      CustomerId = "1234",
+      ProjectUrl = "https://google.com"
     };
 
      TemplateEngine templateEngine = new TemplateEngine(templateDataModel);
@@ -118,9 +125,8 @@ Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag>
  TemplateDataModel templateDataModel = new TemplateDataModel
  {
      ProjectName = "Projectname",
-     KundeNummer = "1234",
-     ProjektLink = "https://google.de",
-     ProjektKuerzel = "PKZL"
+     CustomerId = "1234",
+     ProjectUrl = "https://google.com"
  };
 
  string template = "<p>${ProjectName}</p>";
@@ -137,9 +143,8 @@ Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag>
   TemplateDataModel templateDataModel = new TemplateDataModel
   {
       ProjectName = "Projectname",
-      KundeNummer = "1234",
-      ProjektLink = "https://google.de",
-      ProjektKuerzel = "PKZL"
+      CustomerId = "1234",
+      ProjectUrl = "https://google.com"
   };
 
   string template = "<p>${ProjectName}</p>";
@@ -153,12 +158,11 @@ Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag>
  TemplateDataModel templateDataModel = new TemplateDataModel
  {
      ProjectName = "Projectname",
-     KundeNummer = null,
-     ProjektLink = "https://google.de",
-     ProjektKuerzel = "KZ"
+     CustomerId = null,
+     ProjectUrl = "https://google.de"
  };
 
- string template = "<p>{{ProjectName}}</p><p>{{KundeNummer}}</p>";
+ string template = "<p>{{ProjectName}}</p><p>{{CustomerId}}</p>";
  TemplateEngine<TemplateDataModel> templateEngine = new TemplateEngine<TemplateDataModel>()
  {
      TemplateDataModel = templateDataModel,
@@ -202,22 +206,11 @@ Console.Write(outputString); // Ausgabe: <MyTag>Projektname</MyTag>
 
 ---
  
-## Repository
+## Repo 
 
-https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/src/master/
-
+https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core
 ---
 
 ## Issues 
 
-[report an issue](https://bitbucket.org/MbSoftLab/mbsoftlab.templateengine/issues?status=new&status=open)
-
-
----
-## License
-
-Code licensed under [MIT](https://licenses.nuget.org/MIT)
-
-Documentation licensed under  [CC BY 4.0.](https://creativecommons.org/licenses/by/4.0/)
-
- 
+[report an issue](https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/issues)

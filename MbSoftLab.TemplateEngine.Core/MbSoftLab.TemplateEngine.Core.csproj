@@ -5,7 +5,7 @@
     <AssemblyVersion>1.0.7.0</AssemblyVersion>
     <FileVersion>1.0.7.0</FileVersion>
     <Version>1.0.7</Version>
-	<PackageVersion>1.0.7-preview</PackageVersion>  
+	<PackageVersion>1.0.7</PackageVersion>  
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <DocumentationFile>Documentation.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
