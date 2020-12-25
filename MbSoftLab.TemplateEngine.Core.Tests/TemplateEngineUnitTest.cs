@@ -27,6 +27,24 @@ namespace TemplateEngineCore.Tests
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
         [Test]
+        public void can_create_a_valid_template_from_json()
+        {
+
+            //Arrange  
+            var sut = new TemplateEngine<TemplateDataModelDummy>(); //SUT = [S]ystem [U]nder [T]est
+            sut.TemplateString = "<TagName>${DummyStringProp1}</TagName>";
+           
+            string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
+
+            string jsonData = GetDummyJson();
+            //Act Ausführen der zu testenden Funktion
+            string ReturnString = sut.CreateStringFromJson(jsonData);
+
+
+            //Assert 
+            Assert.AreEqual(ShouldReturnString, ReturnString);
+        }
+        [Test]
         public void can_handle_null_Values_in_Propertys()
         {
 

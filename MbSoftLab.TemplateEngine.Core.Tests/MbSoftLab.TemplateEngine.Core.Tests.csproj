@@ -16,4 +16,10 @@
     <ProjectReference Include="..\MbSoftLab.TemplateEngine.Core\MbSoftLab.TemplateEngine.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="DummyJsonData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
@@ -93,21 +94,14 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             _templateDataModel = templateDataModel;
         }
-     
+ 
         public TemplateEngine()
         {
 
         }
          
         #endregion
-        /// <summary>
-        /// Loads a Templatestring from File
-        /// </summary>
-        /// <param name="path">Path to File with Templatestring.</param>
-        public void LoadTemplateFromFile(string path)
-        {
-            TemplateString = System.IO.File.ReadAllText(path);
-        }
+      
 
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
@@ -148,6 +142,8 @@ namespace MbSoftLab.TemplateEngine.Core
             _templateDataModel = templateDataModel;
             return CreateStringFromTemplate();
         }
+ 
+ 
 
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
