@@ -63,6 +63,8 @@ PM> Install-Package MbSoftLab.TemplateEngine.Core
 |Methodname                                                            |Description                                                     |
 |------------------------------------------------------------------------|-----------------------------------------------------------------|
 |`string CreateStringFromTemplate([string template])`                |*Creates a String from Datamodell and Template*   |
+|`string CreateStringFromJson(templateEngine, string jsonData)`                          |*Loads the Templatedata from JSON*.  
+  |
 |`void LoadTemplateFromFile(string filename)`                          |*Loads a Stringtemplate from file*.                  |
 |`TemplateEngine()`                                                   |Constructor         |
 |`TemplateEngine(object templateDataModel, string stringTemplate)`     |Constructor         |

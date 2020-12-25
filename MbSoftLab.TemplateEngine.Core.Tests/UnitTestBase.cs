@@ -53,6 +53,10 @@ namespace TemplateEngineCore.Tests
 
             return templateDataModelFake;
         }
+        public string GetDummyJson()
+        {
+            return System.IO.File.ReadAllText("DummyJsonData.json");
+        }
         public TemplateDataModelDummyWithList GetTemplateDataModelDummyWithListAndMethod()
         {
             TemplateDataModelDummyWithList templateDataModelFake = new TemplateDataModelDummyWithList

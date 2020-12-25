@@ -12,9 +12,8 @@ namespace TemplateEngineCore.Tests
     {
 
         [Test]
-        public void can_create_a_valid_template()
+        public void can_create_a_valid_string_from_template()
         {
-
             //Arrange  
             var sut = new TemplateEngine<TemplateDataModelDummy>(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
@@ -22,6 +21,20 @@ namespace TemplateEngineCore.Tests
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
 
+            //Assert 
+            Assert.AreEqual(ShouldReturnString, ReturnString);
+        }
+        [Test]
+        public void can_create_a_valid_string_from_template_with_json()
+        {
+            //Arrange  
+            var sut = new TemplateEngine<TemplateDataModelDummy>(); //SUT = [S]ystem [U]nder [T]est
+            sut.TemplateString = "<TagName>${DummyStringProp1}</TagName>";
+            string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
+            string jsonData = GetDummyJson();
+
+            //Act Ausführen der zu testenden Funktion
+            string ReturnString = sut.CreateStringFromTemplateWithJson(jsonData);
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -29,7 +42,6 @@ namespace TemplateEngineCore.Tests
         [Test]
         public void can_handle_null_Values_in_Propertys()
         {
-
             //Arrange
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string ShouldReturnString = "<TagName>NULL</TagName>";
@@ -37,14 +49,12 @@ namespace TemplateEngineCore.Tests
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
         [Test]
         public void can_set_a_custom_null_value_String()
         {
-
             //Arrange 
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
@@ -52,7 +62,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -68,7 +77,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -94,7 +102,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -119,7 +126,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -133,7 +139,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>");
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -150,7 +155,6 @@ namespace TemplateEngineCore.Tests
             //Act 
             string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy());
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -165,7 +169,6 @@ namespace TemplateEngineCore.Tests
 
             //Act 
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -182,7 +185,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -202,7 +204,6 @@ namespace TemplateEngineCore.Tests
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -212,14 +213,12 @@ namespace TemplateEngineCore.Tests
             //Arrange 
             var sut = new TemplateEngine(GetAWrongTemplateDataModelDummy(), "<TagName>${DummyObjectProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-
             //Assert
             Assert.Throws<NotSupportedException>(delegate
             {
                 //Act 
                 sut.CreateStringFromTemplate();
             });
-
         }
         [Test]
         public void throws_excepton_if_file_load_fail()
@@ -264,7 +263,6 @@ namespace TemplateEngineCore.Tests
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -280,7 +278,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -298,7 +295,6 @@ namespace TemplateEngineCore.Tests
 
             //Act
             string ReturnString = sut.CreateStringFromTemplate();
-
 
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
@@ -359,7 +355,6 @@ namespace TemplateEngineCore.Tests
             //Act Ausführen der zu testenden Funktion
             string ReturnString = sut.CreateStringFromTemplate();
 
-
             //Assert Prüfen der Ergebnisse 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
@@ -380,6 +375,5 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.AreEqual(ShouldReturnString, ReturnString);
         }
-
     }
 }
