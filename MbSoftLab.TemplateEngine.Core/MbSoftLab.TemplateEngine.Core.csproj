@@ -30,4 +30,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RazorEngineCore" Version="2020.10.1" />
+  </ItemGroup>
+
 </Project>

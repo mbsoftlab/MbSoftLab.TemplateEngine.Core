@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <RazorCompileToolset>RazorSdk</RazorCompileToolset>
+	  <RazorCompileOnBuild>true</RazorCompileOnBuild>
+	  <EmbedRazorGenerateSources>true</EmbedRazorGenerateSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MbSoftLab.TemplateEngine.Core\MbSoftLab.TemplateEngine.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestModel.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

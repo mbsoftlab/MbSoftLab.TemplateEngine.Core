@@ -84,12 +84,12 @@
             <inheritdoc cref="T:MbSoftLab.TemplateEngine.Core.ITemplateEngineConfig`1"/>
             </summary>
         </member>
-        <member name="M:MbSoftLab.TemplateEngine.Core.TemplateEngineExtensions.CreateStringFromTemplateWithJson``1(MbSoftLab.TemplateEngine.Core.TemplateEngine{``0},System.String)">
+        <member name="M:MbSoftLab.TemplateEngine.Core.TemplateEngineExtensions.CreateStringFromTemplateWithJson``1(MbSoftLab.TemplateEngine.Core.ITemplateEngine{``0},System.String)">
             <summary>
             Load the TemplateDataModel from JSON and builds a String with this Data
             </summary>
         </member>
-        <member name="M:MbSoftLab.TemplateEngine.Core.TemplateEngineExtensions.LoadTemplateFromFile``1(MbSoftLab.TemplateEngine.Core.TemplateEngine{``0},System.String)">
+        <member name="M:MbSoftLab.TemplateEngine.Core.TemplateEngineExtensions.LoadTemplateFromFile``1(MbSoftLab.TemplateEngine.Core.ITemplateEngine{``0},System.String)">
             <summary>
             Loads a Templatestring from File
             </summary>

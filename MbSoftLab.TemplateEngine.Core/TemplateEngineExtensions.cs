@@ -7,7 +7,7 @@ namespace MbSoftLab.TemplateEngine.Core
         /// <summary>
         /// Load the TemplateDataModel from JSON and builds a String with this Data
         /// </summary>
-        public static string CreateStringFromTemplateWithJson<T>(this TemplateEngine<T> templateEngine, string jsonData)
+        public static string CreateStringFromTemplateWithJson<T>(this ITemplateEngine<T> templateEngine, string jsonData)
         {
             templateEngine.TemplateDataModel = JsonSerializer.Deserialize<T>(jsonData);
             return templateEngine.CreateStringFromTemplate();
@@ -16,7 +16,7 @@ namespace MbSoftLab.TemplateEngine.Core
         /// Loads a Templatestring from File
         /// </summary>
         /// <param name="path">Path to File with Templatestring.</param>
-        public static void LoadTemplateFromFile<T>(this TemplateEngine<T> templateEngine, string path)
+        public static void LoadTemplateFromFile<T>(this ITemplateEngine<T> templateEngine, string path)
         {
             templateEngine.TemplateString = System.IO.File.ReadAllText(path);
         }

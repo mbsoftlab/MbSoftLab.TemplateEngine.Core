@@ -9,7 +9,7 @@ namespace MbSoftLab.TemplateEngine.Core
     /// A simple StringTemplateengine for .NET. <br></br>
     /// See <a href="https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/blob/master/README.md"/> for more details
     /// </summary>
-    public class TemplateEngine : TemplateEngine<object>,ITemplateEngine<object>
+    public class TemplateEngine : TemplateEngine<object>, ITemplateEngine<object>
     {
         #region --- CONSTRUCTORS
         public TemplateEngine(object templateDataModel, string stringTemplate):base(templateDataModel, stringTemplate)
