@@ -1,5 +1,4 @@
 ﻿@inherits MbSoftLab.TemplateEngine.Core.Demo.Person
-
 Hello @Model.FirstName
 
 <h1>Your tags are</h1>
@@ -23,4 +22,22 @@ Hello @Model.FirstName
         }
 
     </p1>
+}
+
+
+<area>
+@{ RecursionTest(3); }
+</area>
+
+@{
+    void RecursionTest(int level)
+    {
+        if (level <= 0)
+        {
+            return;
+        }
+
+        <div>LEVEL: @level</div>
+        @{ RecursionTest(level - 1); }
+    }
 }
