@@ -9,7 +9,7 @@ namespace MbSoftLab.TemplateEngine.Core
     /// A simple StringTemplateengine for .NET. <br></br>
     /// See <a href="https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core/blob/master/README.md"/> for more details
     /// </summary>
-    public class TemplateEngine : TemplateEngine<object>
+    public class TemplateEngine : TemplateEngine<object>,ITemplateEngine<object>
     {
         #region --- CONSTRUCTORS
         public TemplateEngine(object templateDataModel, string stringTemplate):base(templateDataModel, stringTemplate)
@@ -27,22 +27,22 @@ namespace MbSoftLab.TemplateEngine.Core
         }
         #endregion
     }
-   
-    public class TemplateEngine<T>
+
+    public class TemplateEngine<T> : ITemplateEngine<T>
     {
         private string _outputString;
-  
+
         #region --- PUBLIC PROPERTYS
         /// <summary>
         /// Beginning Char for a PlaceholderProperty. The Defaultvalue ist "${".
         /// </summary>
-        public string OpeningDelimiter { get=>_openingDelimiter; set=>_openingDelimiter=value.Trim(); }
+        public string OpeningDelimiter { get => _openingDelimiter; set => _openingDelimiter = value.Trim(); }
         private string _openingDelimiter = "${";
         /// <summary>
         /// Ending Char for a PlaceholderProperty. Der Default ist "}".
         /// </summary>
-        public string CloseingDelimiter { get=>_closeingDelimiter; set=>_closeingDelimiter=value.Trim(); }
-        private string _closeingDelimiter = "}";  
+        public string CloseingDelimiter { get => _closeingDelimiter; set => _closeingDelimiter = value.Trim(); }
+        private string _closeingDelimiter = "}";
         /// <summary>
         /// Model with propertys to fill ${PlaceholderPropertys} in the template. The propertynames at DataModel has to be equal with ${Placeholder}
         /// </summary>
@@ -54,7 +54,8 @@ namespace MbSoftLab.TemplateEngine.Core
         public string TemplateString
         {
             get => _templateString;
-            set {
+            set
+            {
                 if (value != null && value != _templateString)
                     _templateString = value;
             }
@@ -63,13 +64,14 @@ namespace MbSoftLab.TemplateEngine.Core
         /// <summary>
         /// Get or Set the string for NULL-Values. Default = NULL. 
         /// </summary>
-        public string NullStringValue { get=>_nullStringValue; set=>_nullStringValue=value; }
+        public string NullStringValue { get => _nullStringValue; set => _nullStringValue = value; }
         string _nullStringValue = "NULL";
         public CultureInfo CultureInfo { get; set; } = CultureInfo.CreateSpecificCulture("en-US");
 
-        public ITemplateEngineConfig<T> Config {
-            get=>_config; 
-            set 
+        public ITemplateEngineConfig<T> Config
+        {
+            get => _config;
+            set
             {
                 _config = value;
                 this.NullStringValue = _config.NullStringValue;
@@ -78,7 +80,7 @@ namespace MbSoftLab.TemplateEngine.Core
                 this.TemplateDataModel = _config.TemplateDataModel;
                 this.TemplateString = _config.TemplateString;
                 this.CultureInfo = _config.CultureInfo;
-            } 
+            }
         }
         private ITemplateEngineConfig<T> _config;
         #endregion
@@ -94,14 +96,14 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             _templateDataModel = templateDataModel;
         }
- 
+
         public TemplateEngine()
         {
 
         }
-         
+
         #endregion
-      
+
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
         /// Example: public string MyProperty  => ${MyProperty}
@@ -111,14 +113,14 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             try
             {
-            TemplateString = stringTemplate;
-            return CreateStringFromTemplate();
+                TemplateString = stringTemplate;
+                return CreateStringFromTemplate();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-      
+
         }
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
@@ -149,8 +151,8 @@ namespace MbSoftLab.TemplateEngine.Core
         /// <returns>File with Data from TemplateDataModel </returns>
         private string CreateStringFromTemplate()
         {
-            _outputString=_templateString;
-            
+            _outputString = _templateString;
+
             IPlaceholderValueRaplacer placeholderValueRaplacer = new PlaceholderValueRaplacer(_outputString, _nullStringValue);
             placeholderValueRaplacer.CultureInfo = CultureInfo;
             TemplateDataModelProcessor templateDataModelProcessor = new TemplateDataModelProcessor(_openingDelimiter, _closeingDelimiter, placeholderValueRaplacer);
