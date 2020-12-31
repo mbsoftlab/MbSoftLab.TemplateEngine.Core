@@ -18,7 +18,9 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: |
+            nuget sources add -name "NuGet official package source" -Source https://api.nuget.org/v3/index.json
+            dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test

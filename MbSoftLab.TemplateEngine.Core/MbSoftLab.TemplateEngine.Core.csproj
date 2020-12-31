@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.0.8.0</AssemblyVersion>
-    <FileVersion>1.0.8.0</FileVersion>
+    <AssemblyVersion>1.0.8.1</AssemblyVersion>
+    <FileVersion>1.0.8.1</FileVersion>
     <Version>1.0.8</Version>
-	<PackageVersion>1.0.8-preview</PackageVersion>  
+	<PackageVersion>1.0.8-preview2</PackageVersion>  
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <DocumentationFile>Documentation.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -28,6 +28,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RazorEngineCore" Version="2020.10.1" />
   </ItemGroup>
 
 </Project>

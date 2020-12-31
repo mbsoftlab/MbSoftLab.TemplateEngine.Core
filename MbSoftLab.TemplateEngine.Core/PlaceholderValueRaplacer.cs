@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
@@ -51,16 +49,14 @@ namespace MbSoftLab.TemplateEngine.Core
             if (value == null)
                 _outputString = _outputString.Replace(placeholderValueName, _nullStringValue);
             else
-                _outputString = _outputString.Replace(placeholderValueName, (String)value);  
+                _outputString = _outputString.Replace(placeholderValueName, (String)value);
         }
         public void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value)
         {
             if (IsNoCollection(valueType))
-                 _replacementActionCollection.InvokeReplacementActionForType(valueType, placeholderValueName, value);
-        }   
+                _replacementActionCollection.InvokeReplacementActionForType(valueType, placeholderValueName, value);
+        }
 
         private bool IsNoCollection(Type valueType) => valueType.FullName.Contains("System.Collections.Generic") == false;
- 
-
     }
 }

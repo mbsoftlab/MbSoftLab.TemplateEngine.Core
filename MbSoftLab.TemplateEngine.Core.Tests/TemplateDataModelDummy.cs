@@ -1,11 +1,17 @@
-﻿using System;
+﻿using MbSoftLab.TemplateEngine.Core;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace TemplateEngineCore.Tests
 {
-    public class TemplateDataModelDummy
+    public class TemplateDataModelDummy:TemplateDataModel<TemplateDataModelDummy>
     {
 
+     
         public string DummyStringProp1 { get; set; }
+     
+ 
+        [DisplaySetting(NullStringValue ="Nothing")]
         public string DummyStringProp2 { get; set; }
 
         public DateTime DummyDateTimeProp1 { get; set; }

@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-     class TemplateDataModelProcessor
+    class TemplateDataModelProcessor
     {
         string _openingDelimiter, _closeingDelimiter;
         private List<String> _methodBlacklist = new List<string>() { "ToString", "GetType", "Equals", "GetHashCode" };
 
         IPlaceholderValueRaplacer _placeholderValueRaplacer;
       
+        private void AddMethodsFromTemplateDataModelBaseClassToBlacklist()
+        {
+           new TemplateDataModel<object>().GetType()
+                .GetMethods().ToList()
+                .ForEach(method=>_methodBlacklist.Add(method.Name));
+        }
         public TemplateDataModelProcessor(string openingDelimiter, string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
         {
             _openingDelimiter = openingDelimiter;
             _closeingDelimiter = closeingDelimiter;
             _placeholderValueRaplacer = placeholderValueRaplacer;
+            AddMethodsFromTemplateDataModelBaseClassToBlacklist();
         }
         public void ProcessTemplateDataModell(object templateDataModel)
         {
@@ -27,7 +33,7 @@ namespace MbSoftLab.TemplateEngine.Core
         private void ProcessTemplateDataModelClassMethods(object templateDataModel)
         {
             Type t = templateDataModel.GetType();
-            List<MethodInfo> methodInfos = t.GetMethods().Where(mi => mi.IsSpecialName == false
+            List<MethodInfo> methodInfos = t.GetMethods().Where(mi => mi.IsSpecialName == false 
                                                             && !_methodBlacklist.Contains(mi.Name)
                                                             ).ToList();
             
@@ -71,7 +77,6 @@ namespace MbSoftLab.TemplateEngine.Core
                     try
                     {
                         _placeholderValueRaplacer.ReplacePlaceholderWithValue(propertyValueType, propertyName, propertyValue);
-
                     }
                     catch (Exception ex)
                     {
