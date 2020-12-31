@@ -18,7 +18,7 @@ namespace TemplateEngineCore.Tests
             var sut = new RazorTemplateEngine<TemplateDataModelDummy>(GetTemplateDataModelDummy(), "<TagName>@Model.DummyStringProp1</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string expectedReturnString = "<TagName>DummyStringProp1Value</TagName>";
 
-            //Act Ausführen der zu testenden Funktion
+            //Act 
             string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
@@ -33,7 +33,7 @@ namespace TemplateEngineCore.Tests
             string expectedReturnString = "<TagName>DummyStringProp1Value</TagName>";
             string jsonData = GetDummyJson();
 
-            //Act Ausführen der zu testenden Funktion
+            //Act 
             string returnString = sut.CreateStringFromTemplateWithJson(jsonData);
 
             //Assert 
@@ -46,7 +46,7 @@ namespace TemplateEngineCore.Tests
             var sut = new RazorTemplateEngine<TemplateDataModelDummy>(GetTemplateDataModelDummy(), "<TagName>@Model.DummyStringProp2</TagName>"); //SUT = [S]ystem [U]nder [T]est
             string expectedReturnString = "<TagName></TagName>";
 
-            //Act Ausführen der zu testenden Funktion
+            //Act 
             string returnString = sut.CreateStringFromTemplate();
 
             //Assert
@@ -85,7 +85,6 @@ namespace TemplateEngineCore.Tests
         public void can_use_the_config()
         {
             //Arrange   
-
             TemplateEngineConfig<TemplateDataModelDummy> templateEngineConfig = new TemplateEngineConfig<TemplateDataModelDummy>()
             {
                 OpeningDelimiter = "{{",
@@ -109,7 +108,6 @@ namespace TemplateEngineCore.Tests
         public void can_use_the_generic_config()
         {
             //Arrange 
-
             TemplateEngineConfig<TemplateDataModelDummy> templateEngineConfig = new TemplateEngineConfig<TemplateDataModelDummy>()
             {
                 OpeningDelimiter = "{{",
@@ -162,7 +160,7 @@ namespace TemplateEngineCore.Tests
    
 
         [Test]
-        public void throws_excepton_if_file_load_fail()
+        public void throws_excepton_if_fileLoading_failed()
         {
             //Arrange  
             var sut = new RazorTemplateEngine<TemplateDataModelDummy>(GetTemplateDataModelDummy(), "<TagName>@Model.DummyObjectProp1</TagName>"); //SUT = [S]ystem [U]nder [T]est
