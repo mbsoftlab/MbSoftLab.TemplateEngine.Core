@@ -18,7 +18,6 @@ namespace MbSoftLab.TemplateEngine.Core
            new TemplateDataModel<object>().GetType()
                 .GetMethods().ToList()
                 .ForEach(method=>_methodBlacklist.Add(method.Name));
-
         }
         public TemplateDataModelProcessor(string openingDelimiter, string closeingDelimiter, IPlaceholderValueRaplacer placeholderValueRaplacer)
         {
