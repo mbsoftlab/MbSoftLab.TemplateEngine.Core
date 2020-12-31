@@ -1,6 +1,8 @@
 ﻿using MbSoftLab.TemplateEngine.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 namespace MbSoftLab.TemplateEngine.Core.Demo
 {
@@ -42,10 +44,16 @@ namespace MbSoftLab.TemplateEngine.Core.Demo
             };
 
 
+
             ITemplateEngine<Person> templateEngine = new RazorTemplateEngine<Person>();
             templateEngine.LoadTemplateFromFile<Person>("TestModel.cshtml");
-            Console.WriteLine(templateEngine.CreateStringFromTemplate(testModel));
+            string templateFileContent = templateEngine.CreateStringFromTemplate(testModel);
+            Console.WriteLine();
+            Console.WriteLine(templateFileContent);
 
+            var htmlFileName = Path.Combine(Path.GetTempPath(), "temp.html");
+            File.WriteAllText(htmlFileName, templateFileContent);
+            Process.Start(@"cmd.exe ", $@"/c {htmlFileName}");
             Console.ReadLine();
 
             
