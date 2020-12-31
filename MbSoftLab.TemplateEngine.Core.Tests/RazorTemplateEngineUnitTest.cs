@@ -174,7 +174,6 @@ namespace TemplateEngineCore.Tests
             var sut = new RazorTemplateEngine<TemplateDataModelDummyWithList>(GetTemplateDataModelDummyWithListAndMethod(), "<TagName>@Model.DummyStringListProp2</TagName>"); //SUT = [S]ystem [U]nder [T]est
             //Act / Assert 
             Assert.DoesNotThrow(delegate { sut.CreateStringFromTemplate(); });
-
         }
         [Test]
         public void can_handle_a_Method_in_DataModel_without_Exeption()
