@@ -68,7 +68,6 @@ namespace MbSoftLab.TemplateEngine.Core
             string result = template.Run(TemplateDataModel);
             return result;
         }
-
         public string CreateStringFromTemplate(T templateDataModel)
         {
             TemplateDataModel = templateDataModel;

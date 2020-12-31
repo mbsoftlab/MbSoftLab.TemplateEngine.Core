@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-     class TemplateDataModelProcessor
+    class TemplateDataModelProcessor
     {
         string _openingDelimiter, _closeingDelimiter;
         private List<String> _methodBlacklist = new List<string>() { "ToString", "GetType", "Equals", "GetHashCode" };

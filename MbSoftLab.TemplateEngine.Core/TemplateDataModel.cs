@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
- 
     public class TemplateDataModel<T> : RazorEngineTemplateBase
     {
         [JsonIgnore]

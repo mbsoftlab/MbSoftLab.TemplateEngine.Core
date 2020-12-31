@@ -11,7 +11,6 @@ namespace MbSoftLab.TemplateEngine.Core
         string OpeningDelimiter { get; set; }
         T TemplateDataModel { get; set; }
         string TemplateString { get; set; }
-
         string CreateStringFromTemplate(string stringTemplate = null);
         string CreateStringFromTemplate(T templateDataModel);
         string CreateStringFromTemplate(T templateDataModel, string stringTemplate);
