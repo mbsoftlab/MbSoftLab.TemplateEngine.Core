@@ -77,7 +77,6 @@ namespace MbSoftLab.TemplateEngine.Core
                     try
                     {
                         _placeholderValueRaplacer.ReplacePlaceholderWithValue(propertyValueType, propertyName, propertyValue);
-
                     }
                     catch (Exception ex)
                     {

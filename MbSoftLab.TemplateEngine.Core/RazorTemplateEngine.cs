@@ -73,7 +73,6 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             TemplateDataModel = templateDataModel;
             return CreateStringFromTemplate();
-
         }
 
         public string CreateStringFromTemplate(T templateDataModel, string csHtmlTemplate)

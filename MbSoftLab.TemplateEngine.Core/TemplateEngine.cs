@@ -85,7 +85,6 @@ namespace MbSoftLab.TemplateEngine.Core
         private ITemplateEngineConfig<T> _config;
         #endregion
 
-
         #region --- CONSTRUCTORS
         public TemplateEngine(T templateDataModel, string stringTemplate)
         {
@@ -120,7 +119,6 @@ namespace MbSoftLab.TemplateEngine.Core
             {
                 throw ex;
             }
-
         }
         /// <summary>
         /// Replaces all Propertys of templateDataModel in stringTemplate. The Popertynames from templateDataModel a the name of ${Placeholder} have to be equal. 
@@ -160,7 +158,5 @@ namespace MbSoftLab.TemplateEngine.Core
 
             return placeholderValueRaplacer.OutputString;
         }
-
     }
-
 }
