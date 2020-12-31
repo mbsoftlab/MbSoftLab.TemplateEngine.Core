@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-    public class RazorTemplateEngine<T> : ITemplateEngine<T> where T: TemplateDataModel<T>
+    public class RazorTemplateEngine<T> : ITemplateEngine<T> where T : TemplateDataModel<T>
     {
         public string CloseingDelimiter { get { Console.WriteLine($"RazorTemplateEngine has no {nameof(CloseingDelimiter)}"); return ""; } set => Console.WriteLine($"Can not set {nameof(CloseingDelimiter)} for RazorTemplateEngine"); }
         ITemplateEngineConfig<T> _config;
@@ -25,11 +25,12 @@ namespace MbSoftLab.TemplateEngine.Core
                 this.CultureInfo = _config.CultureInfo;
             }
         }
-        public CultureInfo CultureInfo { get { Console.WriteLine($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(CultureInfo)}"); return null;} set => Console.WriteLine($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(CultureInfo)}"); }
-        
-        public string NullStringValue { 
+        public CultureInfo CultureInfo { get { Console.WriteLine($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(CultureInfo)}"); return null; } set => Console.WriteLine($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(CultureInfo)}"); }
+
+        public string NullStringValue
+        {
             get => "String.Empty";
-            set {Console.WriteLine(new WarningException($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(NullStringValue)}").Message);}
+            set { Console.WriteLine(new WarningException($"{nameof(RazorTemplateEngine<T>)} can not maipulate {nameof(NullStringValue)}").Message); }
         }
         public string OpeningDelimiter
         {
@@ -44,7 +45,7 @@ namespace MbSoftLab.TemplateEngine.Core
             }
         }
         public T TemplateDataModel { get; set; }
-        public string TemplateString { get ; set ; }
+        public string TemplateString { get; set; }
         IRazorEngine razorEngine;
         public RazorTemplateEngine(IRazorEngine razorEngine)
         {
@@ -54,7 +55,7 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             razorEngine = new RazorEngine();
         }
-        public RazorTemplateEngine(T dataModel, string templateString )
+        public RazorTemplateEngine(T dataModel, string templateString)
         {
             razorEngine = new RazorEngine();
             TemplateDataModel = dataModel;
@@ -72,7 +73,7 @@ namespace MbSoftLab.TemplateEngine.Core
         {
             TemplateDataModel = templateDataModel;
             return CreateStringFromTemplate();
-        
+
         }
 
         public string CreateStringFromTemplate(T templateDataModel, string csHtmlTemplate)
