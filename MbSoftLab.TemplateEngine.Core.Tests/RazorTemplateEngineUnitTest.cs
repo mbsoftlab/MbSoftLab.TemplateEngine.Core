@@ -6,11 +6,9 @@ using System.IO;
 
 namespace TemplateEngineCore.Tests
 {
-
     [TestFixture]
     public class RazorTemplateEngineUnitTest : UnitTestBase
     {
-
         [Test]
         public void can_create_a_valid_string_from_template()
         {
@@ -156,9 +154,6 @@ namespace TemplateEngineCore.Tests
             //Assert
             Assert.AreEqual(expectedReturnString, returnString);
         }
- 
-   
-
         [Test]
         public void throws_excepton_if_fileLoading_failed()
         {
@@ -168,7 +163,6 @@ namespace TemplateEngineCore.Tests
             //Assert 
             Assert.Throws<FileNotFoundException>(delegate
             {
-
                 //Act
                 sut.LoadTemplateFromFile("NonExistingFile.txt");
             });

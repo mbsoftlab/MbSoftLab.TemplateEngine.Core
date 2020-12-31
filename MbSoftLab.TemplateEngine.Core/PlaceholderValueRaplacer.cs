@@ -1,50 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection;
-using System.Text;
 
 namespace MbSoftLab.TemplateEngine.Core
 {
-    public class DisplaySetting : Attribute
-    {
-        private readonly string _value;
-  
-    
-        public string NullStringValue { get; set; }
-        public CultureInfo CultureInfo { get; set; }
-    }
-    public static class TemplateDataModelExtensions
-    {
-        public static string GetNullstringValue(this string value)
-        {
-            string output = null;
-            DisplaySetting[] attrs = GetDisplaySettingsFromTemplateDataModel(value);
-
-            if (attrs.Length > 0)
-                output = attrs[0].NullStringValue;
-
-            return output;
-        }
-        public static string ToString(this string value)
-        {
-            string output = null;
-            DisplaySetting[] attrs = GetDisplaySettingsFromTemplateDataModel(value);
-
-            if (attrs.Length > 0)
-                output = attrs[0].NullStringValue;
-
-            return output;
-        }
-
-        private static DisplaySetting[] GetDisplaySettingsFromTemplateDataModel(string value)
-        {
-            Type type = value.GetType();
-            FieldInfo fi = type.GetField(value.ToString());
-            DisplaySetting[] attrs = fi.GetCustomAttributes(typeof(DisplaySetting), false) as DisplaySetting [];
-            return attrs;
-        }
-    }
     class PlaceholderValueRaplacer : IPlaceholderValueRaplacer
     {
         string _outputString;
@@ -91,16 +49,14 @@ namespace MbSoftLab.TemplateEngine.Core
             if (value == null)
                 _outputString = _outputString.Replace(placeholderValueName, _nullStringValue);
             else
-                _outputString = _outputString.Replace(placeholderValueName, (String)value);  
+                _outputString = _outputString.Replace(placeholderValueName, (String)value);
         }
         public void ReplacePlaceholderWithValue(Type valueType, string placeholderValueName, object value)
         {
             if (IsNoCollection(valueType))
-                 _replacementActionCollection.InvokeReplacementActionForType(valueType, placeholderValueName, value);
-        }   
+                _replacementActionCollection.InvokeReplacementActionForType(valueType, placeholderValueName, value);
+        }
 
         private bool IsNoCollection(Type valueType) => valueType.FullName.Contains("System.Collections.Generic") == false;
- 
-
     }
 }
