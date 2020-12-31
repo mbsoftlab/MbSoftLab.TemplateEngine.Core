@@ -1,8 +1,9 @@
-﻿using System;
+﻿using MbSoftLab.TemplateEngine.Core;
+using System;
 
 namespace TemplateEngineCore.Tests
 {
-    public class TemplateDataModelDummy
+    public class TemplateDataModelDummy:TemplateDataModel<TemplateDataModelDummy>
     {
 
         public string DummyStringProp1 { get; set; }

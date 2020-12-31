@@ -3,9 +3,7 @@ using System.Collections.Generic;
 
 namespace MbSoftLab.TemplateEngine.Core.Demo
 {
- 
-
-    public class Person: TemplateDataModel
+    public class Person: TemplateDataModel<Person>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
