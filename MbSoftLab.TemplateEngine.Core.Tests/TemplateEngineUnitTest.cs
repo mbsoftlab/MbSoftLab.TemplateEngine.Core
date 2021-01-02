@@ -16,13 +16,13 @@ namespace TemplateEngineCore.Tests
         {
             //Arrange  
             var sut = new TemplateEngine<TemplateDataModelDummy>(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp1}</TagName>"); //SUT = [S]ystem [U]nder [T]est
-            string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
+            string expectedReturnString = "<TagName>DummyStringProp1Value</TagName>";
 
-            //Act Ausführen der zu testenden Funktion
-            string ReturnString = sut.CreateStringFromTemplate();
+            //Act
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_create_a_valid_string_from_template_with_json()
@@ -30,27 +30,27 @@ namespace TemplateEngineCore.Tests
             //Arrange  
             var sut = new TemplateEngine<TemplateDataModelDummy>(); //SUT = [S]ystem [U]nder [T]est
             sut.TemplateString = "<TagName>${DummyStringProp1}</TagName>";
-            string ShouldReturnString = "<TagName>DummyStringProp1Value</TagName>";
+            string expectedReturnString = "<TagName>DummyStringProp1Value</TagName>";
             string jsonData = GetDummyJson();
 
-            //Act Ausführen der zu testenden Funktion
-            string ReturnString = sut.CreateStringFromTemplateWithJson(jsonData);
+            //Act 
+            string returnString = sut.CreateStringFromTemplateWithJson(jsonData);
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_handle_null_Values_in_Propertys()
         {
             //Arrange
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
-            string ShouldReturnString = "<TagName>NULL</TagName>";
+            string expectedReturnString = "<TagName>NULL</TagName>";
 
-            //Act Ausführen der zu testenden Funktion
-            string ReturnString = sut.CreateStringFromTemplate();
+            //Act
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_custom_null_value_String()
@@ -58,13 +58,13 @@ namespace TemplateEngineCore.Tests
             //Arrange 
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
-            string ShouldReturnString = "<TagName>Nothing</TagName>";
+            string expectedReturnString = "<TagName>Nothing</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_template()
@@ -73,13 +73,13 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>"); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
-            string ShouldReturnString = "<MyTag>Nothing</MyTag>";
+            string expectedReturnString = "<MyTag>Nothing</MyTag>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_use_the_config()
@@ -97,13 +97,13 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine(); //SUT = [S]ystem [U]nder [T]est
             sut.Config = templateEngineConfig;
 
-            string ShouldReturnString = "<TagName>---</TagName>";
+            string expectedReturnString = "<TagName>---</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_use_the_generic_config()
@@ -121,13 +121,13 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine<TemplateDataModelDummy>();
             sut.Config = templateEngineConfig;
 
-            string ShouldReturnString = "<TagName>---</TagName>";
+            string expectedReturnString = "<TagName>---</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_template_and_model_on_creating()
@@ -135,13 +135,13 @@ namespace TemplateEngineCore.Tests
             //Arrange
             var sut = new TemplateEngine<TemplateDataModelDummy>();
             sut.NullStringValue = "Nothing";
-            string ShouldReturnString = "<TagName>Nothing</TagName>";
+            string expectedReturnString = "<TagName>Nothing</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>");
+            string returnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy(), "<TagName>${DummyStringProp2}</TagName>");
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_model_on_creating()
@@ -150,13 +150,13 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine();
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<TagName>${DummyStringProp2}</TagName>";
-            string ShouldReturnString = "<TagName>Nothing</TagName>";
+            string expectedReturnString = "<TagName>Nothing</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy());
+            string returnString = sut.CreateStringFromTemplate(GetTemplateDataModelDummy());
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_DataModel_with_Annonymos_Type()
@@ -165,13 +165,13 @@ namespace TemplateEngineCore.Tests
             var sut = new TemplateEngine(new { DummyStringProp2 = "2" }); //SUT = [S]ystem [U]nder [T]est
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
-            string ShouldReturnString = "<MyTag>2</MyTag>";
+            string expectedReturnString = "<MyTag>2</MyTag>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_set_a_different_DataModel_with_annonymos_type_after_create_an_instance()
@@ -181,13 +181,13 @@ namespace TemplateEngineCore.Tests
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>${DummyStringProp2}</MyTag>";
             sut.TemplateDataModel = new { DummyStringProp2 = "5" };
-            string ShouldReturnString = "<MyTag>5</MyTag>";
+            string expectedReturnString = "<MyTag>5</MyTag>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void can_change_the_default_delimiters()
@@ -199,13 +199,13 @@ namespace TemplateEngineCore.Tests
             sut.NullStringValue = "Nothing";
             sut.TemplateString = "<MyTag>{{DummyStringProp2}}</MyTag>";
             sut.TemplateDataModel = new { DummyStringProp2 = "5" };
-            string ShouldReturnString = "<MyTag>5</MyTag>";
+            string expectedReturnString = "<MyTag>5</MyTag>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         public void throws_exeption_if_type_not_supported()
@@ -258,13 +258,13 @@ namespace TemplateEngineCore.Tests
             //Arrange 
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
+            string expectedReturnString = "<TagName>" + returnValue + "</TagName>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
         public void can_handle_return_values_from_IntReturningMethod()
@@ -274,13 +274,13 @@ namespace TemplateEngineCore.Tests
             string returnValue = Convert.ToString(Convert.ToInt32("12"));
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
+            string expectedReturnString = "<TagName>" + returnValue + "</TagName>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
         public void can_handle_return_values_from_DoubleReturningMethod()
@@ -291,13 +291,13 @@ namespace TemplateEngineCore.Tests
             string returnValue = Convert.ToString(value, CultureInfo.CreateSpecificCulture("en-US"));
             var sut = new TemplateEngine(GetTemplateDataModelDummyWithMethods(), "<TagName>${" + methodName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-            string ShouldReturnString = "<TagName>" + returnValue + "</TagName>";
+            string expectedReturnString = "<TagName>" + returnValue + "</TagName>";
 
             //Act
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [Test]
         [TestCase("DummyByteProp", "255")]
@@ -317,13 +317,13 @@ namespace TemplateEngineCore.Tests
         {
             //Arrange 
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
-            string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
+            string expectedReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert  
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
         public void can_handle_double_values_from_propertys()
@@ -333,13 +333,13 @@ namespace TemplateEngineCore.Tests
             double value = 1.75;
             string expectedOutput = Convert.ToString(value, CultureInfo.CreateSpecificCulture("en-US"));
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
-            string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
+            string expectedReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
         public void can_handle_date_values_from_propertys()
@@ -350,13 +350,13 @@ namespace TemplateEngineCore.Tests
             //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
-            string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
+            string expectedReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
             //Act Ausführen der zu testenden Funktion
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert Prüfen der Ergebnisse 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
         public void can_create_and_use_SpecificCulture()
@@ -367,13 +367,13 @@ namespace TemplateEngineCore.Tests
             string expectedOutput = Convert.ToString(value, CultureInfo.CreateSpecificCulture("de-DE"));
             TemplateEngine sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>");
             sut.CultureInfo = CultureInfo.CreateSpecificCulture("de-DE");
-            string ShouldReturnString = "<TagName>" + expectedOutput + "</TagName>";
+            string expectedReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
             //Act 
-            string ReturnString = sut.CreateStringFromTemplate();
+            string returnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.AreEqual(expectedReturnString, returnString);
         }
     }
 }
