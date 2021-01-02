@@ -347,15 +347,15 @@ namespace TemplateEngineCore.Tests
             string propertyName = "DummyDateTimeProp1";
             string expectedOutput = Convert.ToString(Convert.ToDateTime("01.01.2020 00:00:00"), CultureInfo.CreateSpecificCulture("en-US"));
 
-            //Arrange -> Vorbereiten der Testumgebung und der benötigten Prameter   
+            //Arrange 
             var sut = new TemplateEngine(GetTemplateDataModelDummy(), "<TagName>${" + propertyName + "}</TagName>"); //SUT = [S]ystem [U]nder [T]est
 
             string expectedReturnString = "<TagName>" + expectedOutput + "</TagName>";
 
-            //Act Ausführen der zu testenden Funktion
+            //Act 
             string returnString = sut.CreateStringFromTemplate();
 
-            //Assert Prüfen der Ergebnisse 
+            //Assert
             Assert.AreEqual(expectedReturnString, returnString);
         }
         [TestCase]
