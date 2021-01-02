@@ -2,20 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.0.8.1</AssemblyVersion>
-    <FileVersion>1.0.8.1</FileVersion>
+    <AssemblyVersion>1.0.8.2</AssemblyVersion>
+    <FileVersion>1.0.8.2</FileVersion>
     <Version>1.0.8</Version>
 	<PackageVersion>1.0.8-preview2</PackageVersion>  
-    <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
+    <Description>This TemplateEngine can replace values from Classpropertys and methods in simple stringtemplates with a very good performance.  The Engine supports the RazorLanguage for creating complex html templates.</Description>
     <DocumentationFile>Documentation.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageTags>Template Engine TemplateEngine StringTemplates C#-Template-Engine</PackageTags>
+    <PackageTags>Template Engine TemplateEngine StringTemplates C#-Template-Engine Razor Razortemplates Razorengine html</PackageTags>
     <PackageId>MbSoftLab.TemplateEngine.Core</PackageId>
     <Company>MbSoftLab</Company>
     <Authors>MbSoftLab</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>© 2020 MbSoftLab</Copyright>
+    <Copyright>© 2021 MbSoftLab</Copyright>
     <PackageIcon>MbSoftLabLogo.png</PackageIcon>
     <PackageIconUrl />
     <PackageProjectUrl>https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core</PackageProjectUrl>
