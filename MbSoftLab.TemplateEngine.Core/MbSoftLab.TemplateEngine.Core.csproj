@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>1.0.7.0</AssemblyVersion>
-    <FileVersion>1.0.7.0</FileVersion>
-    <Version>1.0.7</Version>
-	<PackageVersion>1.0.7</PackageVersion>  
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyVersion>1.0.9</AssemblyVersion>
+    <FileVersion>1.0.9</FileVersion>
+    <Version>1.0.9</Version>
+	<PackageVersion>1.0.9</PackageVersion>  
     <Description>This StringTemplateEngine can replace values from Classpropertys and methods  in stringtemplates</Description>
     <DocumentationFile>Documentation.xml</DocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,7 +15,7 @@
     <Company>MbSoftLab</Company>
     <Authors>MbSoftLab</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>© 2020 MbSoftLab</Copyright>
+    <Copyright>© 2023 MbSoftLab</Copyright>
     <PackageIcon>MbSoftLabLogo.png</PackageIcon>
     <PackageIconUrl />
     <PackageProjectUrl>https://github.com/mbsoftlab/MbSoftLab.TemplateEngine.Core</PackageProjectUrl>

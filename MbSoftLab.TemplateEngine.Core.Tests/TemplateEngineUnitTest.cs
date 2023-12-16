@@ -24,7 +24,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_handle_null_Values_in_Propertys()
@@ -39,7 +39,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString== ReturnString);
         }
         [Test]
         public void can_set_a_custom_null_value_String()
@@ -55,7 +55,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_set_a_template()
@@ -71,7 +71,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_use_the_config()
@@ -96,7 +96,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString==ReturnString);
         }
         [Test]
         public void can_use_the_generic_config()
@@ -121,7 +121,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_set_a_template_and_model_on_creating()
@@ -136,7 +136,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_set_a_model_on_creating()
@@ -152,7 +152,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_set_a_DataModel_with_Annonymos_Type()
@@ -168,7 +168,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_set_a_different_DataModel_with_annonymos_type_after_create_an_instance()
@@ -185,7 +185,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void can_change_the_default_delimiters()
@@ -204,7 +204,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         public void throws_exeption_if_type_not_supported()
@@ -266,7 +266,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [TestCase]
         public void can_handle_return_values_from_IntReturningMethod()
@@ -283,7 +283,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [TestCase]
         public void can_handle_return_values_from_DoubleReturningMethod()
@@ -301,7 +301,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [Test]
         [TestCase("DummyByteProp", "255")]
@@ -327,7 +327,7 @@ namespace TemplateEngineCore.Tests
             string ReturnString = sut.CreateStringFromTemplate();
 
             //Assert  
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [TestCase]
         public void can_handle_double_values_from_propertys()
@@ -343,7 +343,7 @@ namespace TemplateEngineCore.Tests
             string ReturnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [TestCase]
         public void can_handle_date_values_from_propertys()
@@ -361,7 +361,7 @@ namespace TemplateEngineCore.Tests
 
 
             //Assert Prüfen der Ergebnisse 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
         [TestCase]
         public void can_create_and_use_SpecificCulture()
@@ -378,7 +378,7 @@ namespace TemplateEngineCore.Tests
             string ReturnString = sut.CreateStringFromTemplate();
 
             //Assert 
-            Assert.AreEqual(ShouldReturnString, ReturnString);
+            Assert.That(ShouldReturnString == ReturnString);
         }
 
     }
